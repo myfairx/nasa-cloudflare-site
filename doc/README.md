@@ -45,3 +45,9 @@ All site content is managed in `src/data/content.ts`. Edit this file to change:
 ## GitHub
 - **Repo**: https://github.com/myfairx/nasa-cloudflare-site
 - **Token**: Stored in `.env` (not committed)
+
+## Commands
+- `npm run dev` - Start dev server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run check` - Type check with Astro
