@@ -9,7 +9,7 @@
 - **Reference**: `mock1-classic.html` (selected design)
 - **Theme**: Green + Gold (professional, growth, premium)
 - **Colors**:
-  - Primary: `#1B5E20` (deep forest green)
+  - Primary: `#166534` (lighter forest green)
   - Primary Light: `#4CAF50` (lighter green)
   - Gold: `#d4af37`
   - Gold Light: `#fde68a`
