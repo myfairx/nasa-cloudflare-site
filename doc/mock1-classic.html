@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NS Land Consultant - Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --primary: #14532d;
+      --primary-light: #22c55e;
+      --gold: #d4af37;
+      --gold-light: #fde68a;
+    }
+    .hero-gradient {
+      background: linear-gradient(135deg, #14532d 0%, #166534 50%, #14532d 100%);
+    }
+    .gold-accent {
+      color: #d4af37;
+    }
+    .gold-border {
+      border-color: #d4af37;
+    }
+
+    /* Scroll Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+  </style>
+</head>
+<body class="font-sans text-gray-800">
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
+  </script>
+  <!-- Header -->
+  <header class="fixed w-full bg-white/95 backdrop-blur shadow-sm z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-green-800 rounded flex items-center justify-center">
+          <span class="text-white font-bold text-lg">N</span>
+        </div>
+        <span class="font-semibold text-xl text-green-900">NS Land Consultant</span>
+      </div>
+      <nav class="hidden md:flex gap-8 text-sm font-medium">
+        <a href="#" class="text-green-800">Home</a>
+        <a href="#" class="text-gray-600 hover:text-green-800">About</a>
+        <a href="#" class="text-gray-600 hover:text-green-800">Services</a>
+        <a href="#" class="text-gray-600 hover:text-green-800">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero-gradient min-h-screen flex items-center">
+    <div class="max-w-6xl mx-auto px-6 py-32 grid md:grid-cols-2 gap-12 items-center">
+      <div class="text-white reveal">
+        <p class="gold-accent font-medium mb-4 tracking-wider uppercase text-sm">Malaysia Land Consultancy</p>
+        <h1 class="text-5xl font-bold mb-6 leading-tight">Your Trusted Partner in Land Development</h1>
+        <p class="text-green-100 text-lg mb-8 max-w-md">Expert guidance for land acquisition, title conversion, and development consultancy across Malaysia.</p>
+        <div class="flex gap-4 reveal-delay-1">
+          <button class="bg-gold text-green-900 px-6 py-3 font-semibold rounded hover:bg-yellow-500 transition">Our Services</button>
+          <button class="border-2 border-white text-white px-6 py-3 font-semibold rounded hover:bg-white hover:text-green-900 transition">Contact Us</button>
+        </div>
+      </div>
+      <div class="hidden md:block relative reveal reveal-delay-2">
+        <div class="absolute -top-10 -right-10 w-72 h-72 bg-gold/20 rounded-full blur-3xl"></div>
+        <div class="relative bg-white/10 backdrop-blur rounded-2xl p-8 border border-white/20">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-white/90 rounded-xl p-6 text-center reveal reveal-delay-1">
+              <p class="text-3xl font-bold text-green-800">500+</p>
+              <p class="text-sm text-gray-600">Projects Completed</p>
+            </div>
+            <div class="bg-white/90 rounded-xl p-6 text-center reveal reveal-delay-1">
+              <p class="text-3xl font-bold text-green-800">15+</p>
+              <p class="text-sm text-gray-600">Years Experience</p>
+            </div>
+            <div class="bg-white/90 rounded-xl p-6 text-center reveal reveal-delay-2">
+              <p class="text-3xl font-bold text-green-800">100%</p>
+              <p class="text-sm text-gray-600">Client Satisfaction</p>
+            </div>
+            <div class="bg-white/90 rounded-xl p-6 text-center reveal reveal-delay-2">
+              <p class="text-3xl font-bold text-green-800">Malaysia</p>
+              <p class="text-sm text-gray-600">Coverage</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Preview -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <p class="text-green-700 font-medium mb-2">Our Expertise</p>
+        <h2 class="text-4xl font-bold text-gray-900">Comprehensive Land Consultancy</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl p-8 shadow-lg border-t-4 border-green-700 reveal reveal-delay-1">
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Land Acquisition</h3>
+          <p class="text-gray-600">Strategic land acquisition services for developers and investors seeking prime locations in Malaysia.</p>
+        </div>
+        <div class="bg-white rounded-xl p-8 shadow-lg border-t-4 border-green-700 reveal reveal-delay-2">
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Title Conversion</h3>
+          <p class="text-gray-600">Expert assistance in converting land titles and navigating the complex regulatory landscape.</p>
+        </div>
+        <div class="bg-white rounded-xl p-8 shadow-lg border-t-4 border-green-700 reveal reveal-delay-3">
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Due Diligence</h3>
+          <p class="text-gray-600">Thorough land title verification and due diligence to protect your investment interests.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-green-900">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-white mb-6 reveal">Ready to Start Your Project?</h2>
+      <p class="text-green-100 mb-8 reveal reveal-delay-1">Contact us today for a free consultation on your land consultancy needs.</p>
+      <button class="bg-gold text-green-900 px-8 py-4 font-semibold rounded-lg hover:bg-yellow-500 transition text-lg reveal reveal-delay-2">Get in Touch</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 py-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6 reveal">
+        <div class="text-white">
+          <p class="font-semibold">NS Land Consultant</p>
+          <p class="text-gray-400 text-sm">Professional land consultancy services in Malaysia</p>
+        </div>
+        <div class="text-gray-400 text-sm">
+          © 2026 NS Land Consultant. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

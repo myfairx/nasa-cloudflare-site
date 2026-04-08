@@ -6,7 +6,7 @@
 - **Stack**: Astro + Tailwind CSS + Cloudflare Pages
 
 ## Design System
-- **Reference**: `mock1-classic.html` (selected design)
+- **Reference**: `doc/mock1-classic.html` (selected design)
 - **Theme**: Green + Gold (professional, growth, premium)
 - **Colors**:
   - Primary: `#14532d` (deep forest green)
@@ -26,10 +26,11 @@
 ## Tech Details
 - **Adapter**: `@astrojs/cloudflare` for Cloudflare Pages
 - **Styling**: Tailwind CSS
-- **Deployment**: Cloudflare Pages
+- **Deployment**: Cloudflare Pages (connect GitHub repo)
 
 ## To Do
 - [ ] Write actual content (services, about, etc.)
+- [ ] Finalize brand colors
 - [ ] Add company logo
 - [ ] Deploy to Cloudflare Pages
 - [ ] Connect domain

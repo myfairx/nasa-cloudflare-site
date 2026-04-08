@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NS Land Consultant - Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&display=swap');
+    
+    :root {
+      --deep-green: #0D2818;
+      --forest: #1A4D2E;
+      --gold: #C9A227;
+      --cream: #FAF8F5;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+    }
+    
+    .font-display {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .bg-deep {
+      background: var(--deep-green);
+    }
+    
+    .text-gold {
+      color: var(--gold);
+    }
+    
+    .gold-shine {
+      background: linear-gradient(90deg, var(--gold), #E8C547, var(--gold));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  </style>
+</head>
+<body class="text-gray-800">
+  <!-- Navigation - Floating -->
+  <nav class="fixed top-0 left-0 right-0 z-50 px-8 py-6">
+    <div class="max-w-[1400px] mx-auto flex justify-between items-center">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 bg-deep flex items-center justify-center">
+          <span class="text-gold font-display text-xl">N</span>
+        </div>
+        <span class="font-display text-lg tracking-wide">NS Land Consultant</span>
+      </div>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#" class="text-sm text-gray-600 hover:text-deep transition-colors">Home</a>
+        <a href="#" class="text-sm text-gray-600 hover:text-deep transition-colors">About</a>
+        <a href="#" class="text-sm text-gray-600 hover:text-deep transition-colors">Services</a>
+        <a href="#" class="bg-deep text-white px-5 py-2.5 text-sm hover:bg-forest transition-colors">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero - Full Bleed Image Style -->
+  <section class="min-h-screen bg-deep relative overflow-hidden">
+    <!-- Abstract Shapes -->
+    <div class="absolute top-20 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-bl from-forest/50 to-transparent blur-3xl"></div>
+    <div class="absolute bottom-0 left-1/3 w-[400px] h-[400px] rounded-full bg-gold/5 blur-3xl"></div>
+    
+    <!-- Diagonal Lines Pattern -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 40px, #fff 40px, #fff 41px);"></div>
+    
+    <div class="relative z-10 max-w-[1400px] mx-auto px-8 py-40 grid lg:grid-cols-2 gap-16 items-center min-h-screen">
+      <div>
+        <p class="text-gold tracking-[0.3em] uppercase text-xs mb-8">Land Consultancy · Malaysia</p>
+        <h1 class="font-display text-6xl lg:text-7xl text-white leading-[1.05] mb-8">
+          Where vision meets <span class="gold-shine">terrain</span>
+        </h1>
+        <p class="text-gray-400 text-lg max-w-md mb-10 leading-relaxed">
+          Transforming land possibilities into tangible achievements. Expert consultancy for developers, investors, and landowners across Malaysia.
+        </p>
+        <div class="flex items-center gap-6">
+          <button class="bg-gold text-deep px-8 py-4 text-sm font-medium hover:bg-yellow-500 transition-colors">View Services</button>
+          <a href="#" class="text-white text-sm border-b border-gold/50 pb-1 hover:border-gold transition-colors">Get in touch →</a>
+        </div>
+      </div>
+      
+      <!-- Feature Cards -->
+      <div class="hidden lg:grid grid-cols-2 gap-4">
+        <div class="bg-white/5 backdrop-blur border border-white/10 p-8 hover:border-gold/30 transition-colors">
+          <p class="text-gold text-4xl font-display mb-2">500+</p>
+          <p class="text-gray-400 text-sm">Successful Transactions</p>
+        </div>
+        <div class="bg-white/5 backdrop-blur border border-white/10 p-8 mt-16 hover:border-gold/30 transition-colors">
+          <p class="text-gold text-4xl font-display mb-2">15</p>
+          <p class="text-gray-400 text-sm">Years of Excellence</p>
+        </div>
+        <div class="bg-white/5 backdrop-blur border border-white/10 p-8 hover:border-gold/30 transition-colors">
+          <p class="text-gold text-4xl font-display mb-2">RM2B</p>
+          <p class="text-gray-400 text-sm">Land Value Advised</p>
+        </div>
+        <div class="bg-white/5 backdrop-blur border border-white/10 p-8 hover:border-gold/30 transition-colors">
+          <p class="text-gold text-4xl font-display mb-2">100%</p>
+          <p class="text-gray-400 text-sm">Client Trust</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services - Editorial Layout -->
+  <section class="py-32 bg-cream">
+    <div class="max-w-[1400px] mx-auto px-8">
+      <div class="grid lg:grid-cols-3 gap-16">
+        <div class="lg:col-span-1">
+          <p class="text-gold tracking-widest uppercase text-xs mb-4">What We Do</p>
+          <h2 class="font-display text-4xl text-deep leading-tight">
+            Comprehensive land consultancy solutions
+          </h2>
+        </div>
+        <div class="lg:col-span-2 grid md:grid-cols-2 gap-8">
+          <div class="border-l-2 border-deep pl-6 py-2">
+            <h3 class="font-display text-xl text-deep mb-3">Land Acquisition</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">Strategic sourcing and acquisition of prime lands for residential, commercial, and industrial developments.</p>
+          </div>
+          <div class="border-l-2 border-deep pl-6 py-2">
+            <h3 class="font-display text-xl text-deep mb-3">Title Conversion</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">Streamlined title conversion processes with deep expertise in Malaysian land regulations.</p>
+          </div>
+          <div class="border-l-2 border-deep pl-6 py-2">
+            <h3 class="font-display text-xl text-deep mb-3">Due Diligence</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">Thorough risk assessment and title verification to protect your investment at every step.</p>
+          </div>
+          <div class="border-l-2 border-deep pl-6 py-2">
+            <h3 class="font-display text-xl text-deep mb-3">Development Advisory</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">Expert guidance on zoning, density, and development potential to maximize your land's value.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote/USP -->
+  <section class="py-24 bg-deep relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
+    <div class="max-w-3xl mx-auto px-8 text-center relative z-10">
+      <p class="font-display text-3xl lg:text-4xl text-white italic mb-8 leading-relaxed">
+        "We don't just consult on land. We help you see the possibilities that others miss."
+      </p>
+      <p class="text-gray-500">— Founder, NS Land Consultant</p>
+    </div>
+    <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-16 bg-cream">
+    <div class="max-w-[1400px] mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8">
+      <div class="flex items-center gap-4">
+        <div class="w-10 h-10 bg-deep flex items-center justify-center">
+          <span class="text-gold font-display text-lg">N</span>
+        </div>
+        <div>
+          <p class="font-display text-deep">NS Land Consultant</p>
+          <p class="text-gray-500 text-sm">Kuala Lumpur, Malaysia</p>
+        </div>
+      </div>
+      <div class="text-gray-400 text-sm">
+        © 2026 NS Land Consultant · All rights reserved
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
