@@ -24,14 +24,17 @@
 4. **Contact** - Contact form and info
 
 ## Tech Details
-- **Adapter**: `@astrojs/cloudflare` for Cloudflare Pages
-- **Styling**: Tailwind CSS
-- **Deployment**: Cloudflare Pages
+- **Build Mode**: Static Site Generation (SSG) via `@astrojs/cloudflare`
+- **Styling**: Tailwind CSS v4
+- **Animations**: Scroll-reveal with IntersectionObserver (implemented)
+- **Deployment**: Cloudflare Pages (static upload)
+- **Node Version**: >=22.12.0
 
 ## To Do
 - [ ] Add company logo
-- [x] Deploy to Cloudflare Pages
-- [ ] Connect domain
+- [ ] Deploy to Cloudflare Pages
+- [ ] Connect domain (nslandconsultant.com)
+- [ ] Set up contact form handler (Formspree or similar)
 
 ## Content
 All site content is managed in `src/data/content.ts`. Edit this file to change:

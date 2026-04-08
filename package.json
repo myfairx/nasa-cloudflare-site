@@ -10,15 +10,36 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "astro check"
+    "check": "astro check",
+    "lint": "eslint \"src/**/*.{astro,ts,js}\"",
+    "format": "prettier --write \"src/**/*.{astro,ts,js,css,md}\"",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "src/**/*.{astro,ts,js}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "src/**/*.{css,md,json}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^13.1.7",
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.1.4",
     "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
+    "@typescript-eslint/eslint-plugin": "^8.58.1",
+    "@typescript-eslint/parser": "^8.58.1",
+    "eslint": "^10.2.0",
+    "eslint-plugin-astro": "^1.7.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.8.1",
+    "prettier-plugin-astro": "^0.14.1",
     "typescript": "^5.9.3"
   }
 }

@@ -1,43 +1,71 @@
-# Astro Starter Kit: Minimal
+# NS Land Consultant
 
-```sh
-npm create astro@latest -- --template minimal
+Corporate landing page for NS Land Consultant — a land consultancy firm based in Malaysia.
+
+## Stack
+
+- **Astro 6** — Static Site Generation
+- **Tailwind CSS 4** — Styling
+- **TypeScript** — Type safety
+- **Cloudflare Pages** — Deployment
+
+## Quick Start
+
+```bash
+npm install
+npm run dev       # Start dev server at localhost:4321
+npm run build     # Build for production (outputs to ./dist/)
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Project Structure
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
+```
 /
-├── public/
+├── doc/                  # Design mockups & project specs
+├── public/               # Static assets (favicon, images)
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── data/
+│   │   └── content.ts    # All site content — edit here
+│   ├── layouts/
+│   │   └── Layout.astro  # Main layout with nav, footer, animations
+│   ├── pages/
+│   │   ├── index.astro   # Home
+│   │   ├── about.astro   # About
+│   │   ├── services.astro # Services
+│   │   └── contact.astro # Contact
+│   └── styles/
+│       └── global.css    # Tailwind config + custom styles
+└── astro.config.mjs
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Content Management
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+All text content is centralized in `src/data/content.ts`. Edit this file to update:
+- Site name, tagline, contact info
+- Navigation labels
+- Hero section text
+- Services descriptions
+- About page content
+- Footer links
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Design System
 
-## 🧞 Commands
+- **Theme**: Green + Gold (professional, premium)
+- **Animations**: Scroll-reveal on sections (IntersectionObserver)
+- **Mockups**: See `doc/` folder for design references
 
-All commands are run from the root of the project, from a terminal:
+## Deployment
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Build output goes to `./dist/`. Deploy to Cloudflare Pages via:
+- Drag & drop `dist/` folder in Cloudflare dashboard
+- GitHub integration (auto-deploy on push)
+- Wrangler CLI: `npx wrangler pages deploy dist`
 
-## 👀 Want to learn more?
+## Commands
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+| Command | Action |
+|---|---|
+| `npm run dev` | Start dev server at `localhost:4321` |
+| `npm run build` | Build production site to `./dist/` |
+| `npm run preview` | Preview production build locally |
+| `npm run check` | Type check with Astro |

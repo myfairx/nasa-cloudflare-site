@@ -18,21 +18,25 @@ const { title } = Astro.props;
     <title>{title} | {siteConfig.name}</title>
   </head>
   <body class="bg-white text-gray-900">
-    <header class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
+    <header
+      class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50"
+    >
       <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
           <a href="/" class="text-xl font-bold text-primary-600">
             {siteConfig.name}
           </a>
           <div class="hidden md:flex space-x-8">
-            {navigation.map((item) => (
-              <a
-                href={item.href}
-                class="text-gray-700 hover:text-primary-600 transition-colors"
-              >
-                {item.label}
-              </a>
-            ))}
+            {
+              navigation.map((item) => (
+                <a
+                  href={item.href}
+                  class="text-gray-700 hover:text-primary-600 transition-colors"
+                >
+                  {item.label}
+                </a>
+              ))
+            }
           </div>
           <a
             href="/contact"
@@ -58,13 +62,18 @@ const { title } = Astro.props;
           <div>
             <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
             <ul class="space-y-2">
-              {footer.quickLinks.map((link) => (
-                <li>
-                  <a href={link.href} class="text-gray-400 hover:text-white transition-colors">
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+              {
+                footer.quickLinks.map((link) => (
+                  <li>
+                    <a
+                      href={link.href}
+                      class="text-gray-400 hover:text-white transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))
+              }
             </ul>
           </div>
           <div>
@@ -74,10 +83,34 @@ const { title } = Astro.props;
             <p class="text-gray-400">{siteConfig.email}</p>
           </div>
         </div>
-        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+        <div
+          class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400"
+        >
           {footer.copyright}
         </div>
       </div>
     </footer>
+
+    <script>
+      // Scroll-reveal animations using IntersectionObserver
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px',
+        }
+      );
+
+      // Observe all elements with the 'reveal' class
+      document.querySelectorAll('.reveal').forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
   </body>
 </html>
