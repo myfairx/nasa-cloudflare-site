@@ -9,8 +9,8 @@
 - **Reference**: `doc/mock1-classic.html` (selected design)
 - **Theme**: Green + Gold (professional, growth, premium)
 - **Colors**:
-  - Primary: `#14532d` (deep forest green)
-  - Primary Light: `#22c55e` (lighter green)
+  - Primary: `#1B5E20` (deep forest green)
+  - Primary Light: `#4CAF50` (lighter green)
   - Gold: `#d4af37`
   - Gold Light: `#fde68a`
 - **Animations**: Scroll-reveal animations on each section (IntersectionObserver)
