@@ -1,36 +1,28 @@
 # NS Land Consultant Website
 
-## Project Overview
-- **Type**: Corporate landing page for land consultancy firm (Malaysia)
-- **Domain**: nslandconsultant.com (on Cloudflare)
+## Project Structure
+```
+/DATA/nasa
+├── src/
+│   ├── data/
+│   │   └── content.ts   # All site content (editable)
+│   ├── pages/           # Astro pages (index, about, services, contact)
+│   ├── components/      # Reusable UI components
+│   ├── layouts/         # Page layouts
+│   └── styles/          # Global styles
+├── public/              # Static assets
+├── doc/                 # Design references & docs
+├── astro.config.mjs
+├── tailwind.config.mjs
+└── package.json
+```
+
+## Commands
+- `npm run dev` - Start dev server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+
+## Key Info
 - **Stack**: Astro + Tailwind CSS + Cloudflare Pages
-
-## Design System
-- **Reference**: `doc/mock1-classic.html` (selected design)
-- **Theme**: Green + Gold (professional, growth, premium)
-- **Colors**:
-  - Primary: `#166534` (lighter forest green)
-  - Primary Light: `#4CAF50` (lighter green)
-  - Gold: `#d4af37`
-  - Gold Light: `#fde68a`
-- **Animations**: Scroll-reveal animations on each section (IntersectionObserver)
-  - Elements fade in and slide up when entering viewport
-  - Staggered delays for sequential elements
-
-## Pages
-1. **Home** - Hero, services overview, why us, contact CTA
-2. **About** - Company story, values
-3. **Services** - Land consultancy services offered
-4. **Contact** - Contact form and info
-
-## Tech Details
-- **Adapter**: `@astrojs/cloudflare` for Cloudflare Pages
-- **Styling**: Tailwind CSS
-- **Deployment**: Cloudflare Pages (connect GitHub repo)
-
-## To Do
-- [ ] Write actual content (services, about, etc.)
-- [ ] Finalize brand colors
-- [ ] Add company logo
-- [ ] Deploy to Cloudflare Pages
-- [ ] Connect domain
+- **Design**: See `doc/mock1-classic.html` for reference
+- **Full docs**: See `doc/README.md`
