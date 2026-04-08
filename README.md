@@ -4,10 +4,11 @@ Corporate landing page for NS Land Consultant — a land consultancy firm based 
 
 ## Stack
 
-- **Astro 6** — Static Site Generation
-- **Tailwind CSS 4** — Styling
-- **TypeScript** — Type safety
-- **Cloudflare Pages** — Deployment
+- **Astro 6** — Static Site Generation (SSG)
+- **Tailwind CSS 4** — Styling (`@theme` syntax)
+- **TypeScript 5** — Strict mode
+- **Cloudflare Pages** — Deployment (static upload)
+- **Node >= 22.12.0** — Required version
 
 ## Quick Start
 
@@ -15,6 +16,9 @@ Corporate landing page for NS Land Consultant — a land consultancy firm based 
 npm install
 npm run dev       # Start dev server at localhost:4321
 npm run build     # Build for production (outputs to ./dist/)
+npm run check     # TypeScript type check
+npm run lint      # ESLint code quality check
+npm run format    # Prettier formatting
 ```
 
 ## Project Structure
@@ -27,7 +31,7 @@ npm run build     # Build for production (outputs to ./dist/)
 │   ├── data/
 │   │   └── content.ts    # All site content — edit here
 │   ├── layouts/
-│   │   └── Layout.astro  # Main layout with nav, footer, animations
+│   │   └── Layout.astro  # Main layout (nav, footer, animations)
 │   ├── pages/
 │   │   ├── index.astro   # Home
 │   │   ├── about.astro   # About
@@ -35,7 +39,10 @@ npm run build     # Build for production (outputs to ./dist/)
 │   │   └── contact.astro # Contact
 │   └── styles/
 │       └── global.css    # Tailwind config + custom styles
-└── astro.config.mjs
+├── eslint.config.mjs     # ESLint configuration
+├── .prettierrc           # Prettier configuration
+├── .husky/               # Git pre-commit hooks
+└── astro.config.mjs      # Astro configuration
 ```
 
 ## Content Management
@@ -51,8 +58,19 @@ All text content is centralized in `src/data/content.ts`. Edit this file to upda
 ## Design System
 
 - **Theme**: Green + Gold (professional, premium)
+- **Primary Green**: `#166534` (primary-800)
+- **Gold Accent**: `#d4af37`
 - **Animations**: Scroll-reveal on sections (IntersectionObserver)
 - **Mockups**: See `doc/` folder for design references
+
+## Guardrails
+
+| Tool | Purpose | Command |
+|---|---|---|
+| **TypeScript** | Type safety, strict mode | `npm run check` |
+| **ESLint** | Code quality, bad patterns | `npm run lint` |
+| **Prettier** | Consistent formatting | `npm run format` |
+| **Husky** | Pre-commit hooks (auto-run) | Automatic on `git commit` |
 
 ## Deployment
 
@@ -68,4 +86,13 @@ Build output goes to `./dist/`. Deploy to Cloudflare Pages via:
 | `npm run dev` | Start dev server at `localhost:4321` |
 | `npm run build` | Build production site to `./dist/` |
 | `npm run preview` | Preview production build locally |
-| `npm run check` | Type check with Astro |
+| `npm run check` | TypeScript type check |
+| `npm run lint` | ESLint code quality check |
+| `npm run format` | Prettier code formatting |
+
+## Pending Tasks
+
+- [ ] Add company logo (replace favicon)
+- [ ] Deploy to Cloudflare Pages
+- [ ] Connect domain (nslandconsultant.com)
+- [ ] Set up contact form handler (Formspree or similar)
