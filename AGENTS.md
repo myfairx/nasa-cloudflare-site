@@ -26,3 +26,12 @@
 - **Stack**: Astro + Tailwind CSS + Cloudflare Pages
 - **Design**: See `doc/mock1-classic.html` for reference
 - **Full docs**: See `doc/README.md`
+
+## GitHub
+- **Repo**: https://github.com/myfairx/nasa-cloudflare-site
+- **Token**: Stored in `.env` (not committed)
+
+## Deployment
+- Connect repo to Cloudflare Pages
+- Build command: `npm run build`
+- Output directory: `dist`

@@ -29,7 +29,19 @@
 - **Deployment**: Cloudflare Pages
 
 ## To Do
-- [ ] Write actual content (services, about, etc.)
 - [ ] Add company logo
-- [ ] Deploy to Cloudflare Pages
+- [x] Deploy to Cloudflare Pages
 - [ ] Connect domain
+
+## Content
+All site content is managed in `src/data/content.ts`. Edit this file to change:
+- Site name, contact info
+- Navigation labels
+- Hero section text
+- Services descriptions
+- About page content
+- Footer links
+
+## GitHub
+- **Repo**: https://github.com/myfairx/nasa-cloudflare-site
+- **Token**: Stored in `.env` (not committed)
