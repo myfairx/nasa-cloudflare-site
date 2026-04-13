@@ -1,0 +1,249 @@
+================================================================================
+NS LAND CONSULTANT - WEBSITE CONTENT QUESTIONNAIRE
+================================================================================
+
+Please fill in the information below and send it back to us.
+We'll use your answers to build your website.
+
+================================================================================
+1. COMPANY INFORMATION
+================================================================================
+
+Q1. What is your official company name?
+
+   Answer:
+
+
+Q2. What is a short tagline describing your services? (5-10 words)
+   Example: "Professional Land Consultancy Services in Malaysia"
+
+   Answer:
+
+
+Q3. What email address should customers contact you at?
+
+   Answer:
+
+
+Q4. What is your phone number? (include country code, e.g., +60...)
+
+   Answer:
+
+
+Q5. What is your office location? (city, state)
+   Example: Kuala Lumpur, Malaysia
+
+   Answer:
+
+
+Q6. What is your domain name? (e.g., nslandconsultant.com - without https://)
+
+   Answer:
+
+
+================================================================================
+2. NAVIGATION
+================================================================================
+
+Q7. What pages should appear in your menu?
+   List the page names and their links.
+   Example: Home (/), About (/about), Services (/services), Contact (/contact)
+
+   Answer:
+
+
+================================================================================
+3. HERO SECTION (HOMEPAGE)
+================================================================================
+
+Q8. What is the main headline for your hero section? (5-8 words)
+   Example: "Your Trusted Land Consultancy Partner"
+
+   Answer:
+
+
+Q9. What is the subtitle/description under the headline? (15-25 words)
+   Example: "Expert guidance for all your land development and property needs across Malaysia"
+
+   Answer:
+
+
+Q10. What should the button text say? (e.g., "Get in Touch", "Contact Us")
+
+   Answer:
+
+
+================================================================================
+4. YOUR SERVICES
+================================================================================
+
+List 4-6 main services you offer. For each service, provide:
+- Name
+- Description (20-40 words)
+- Icon: building, chart, document, shield, home, or briefcase
+
+SERVICE 1:
+
+   Name:
+   Description:
+   Icon:
+
+
+SERVICE 2:
+
+   Name:
+   Description:
+   Icon:
+
+
+SERVICE 3:
+
+   Name:
+   Description:
+   Icon:
+
+
+SERVICE 4:
+
+   Name:
+   Description:
+   Icon:
+
+
+(Add more services if needed)
+
+
+================================================================================
+5. WHY CHOOSE US
+================================================================================
+
+Q11. What are your top 3-4 reasons why clients should choose you?
+     For each, provide a short title (2-5 words) and description (8-15 words).
+
+Reason 1:
+
+   Title:
+   Description:
+
+
+Reason 2:
+
+   Title:
+   Description:
+
+
+Reason 3:
+
+   Title:
+   Description:
+
+
+Reason 4:
+
+   Title:
+   Description:
+
+
+================================================================================
+6. ABOUT PAGE
+================================================================================
+
+Q12. What should be the page title for your About page?
+     Example: "About NS Land Consultant"
+
+   Answer:
+
+
+Q13. Tell us your company story. Include:
+     - How and when you started
+     - What makes you different
+     - Who you help (developers, investors, landowners, etc.)
+     (50-100 words)
+
+   Answer:
+
+
+
+
+
+Q14. What are your core company values? List 3-5 values.
+     Example: "Integrity in every transaction", "Excellence in service delivery", "Long-term client relationships"
+
+   Answer:
+
+
+
+================================================================================
+7. CONTACT PAGE
+================================================================================
+
+Q15. What should be the main heading for your contact page?
+     Example: "Get in Touch"
+
+   Answer:
+
+
+Q16. What subtitle text should appear under the heading? (10-20 words)
+     Example: "Ready to discuss your land or property needs? Contact us today."
+
+   Answer:
+
+
+Q17. What labels should your contact form have?
+
+     Name field label:
+     Email field label:
+     Phone field label:
+     Message field label:
+     Submit button text:
+
+
+================================================================================
+8. FOOTER
+================================================================================
+
+Q18. Write a short description of your company for the footer. (15-25 words)
+     Example: "Professional land consultancy services helping clients navigate Malaysia's property landscape with confidence."
+
+   Answer:
+
+
+Q19. What should the copyright text say?
+     (We'll automatically add the current year)
+     Example: "NS Land Consultant. All rights reserved."
+
+   Answer:
+
+
+================================================================================
+9. ADDITIONAL INFORMATION
+================================================================================
+
+Q20. Do you have a logo? Please attach if available, or let us know if you need one designed.
+
+
+   Answer:
+
+
+Q21. Are there any competitors or websites you like for reference?
+
+
+   Answer:
+
+
+Q22. Any other information you'd like to share?
+
+
+   Answer:
+
+
+
+================================================================================
+THANK YOU!
+================================================================================
+
+Please send your completed questionnaire to: [your email]
+
+Once we receive this, we'll build your website and share it with you for review.
+
+For questions: [your contact email]
