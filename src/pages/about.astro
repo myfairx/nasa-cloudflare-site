@@ -1,24 +1,34 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { about } from '../data/content';
+import { translations } from '../data/content';
+
+export function getStaticPaths() {
+  return [
+    { params: {}, props: { lang: 'ms' as const } },
+    { params: { lang: 'en' }, props: { lang: 'en' as const } },
+  ];
+}
+
+const { lang = 'ms' } = Astro.props;
+const t = translations[lang];
 ---
 
-<Layout title="About">
+<Layout title={t.nav.about} lang={lang}>
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl">
         <h1 class="reveal text-4xl md:text-5xl font-bold text-gray-900 mb-8">
-          {about.title}
+          {t.about.title}
         </h1>
         <div class="reveal prose prose-lg text-gray-600">
-          <p class="mb-6">{about.story}</p>
+          <p class="mb-6">{t.about.story}</p>
         </div>
         <h2 class="reveal text-2xl font-semibold text-gray-900 mb-4">
-          Our Values
+          {lang === 'ms' ? 'Nilai Kami' : 'Our Values'}
         </h2>
         <ul class="space-y-3">
           {
-            about.values.map((value, index) => (
+            t.about.values.map((value: string, index: number) => (
               <li
                 class={`reveal flex items-center text-gray-600 delay-${index + 1}`}
               >

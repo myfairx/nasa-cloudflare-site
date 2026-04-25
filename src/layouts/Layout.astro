@@ -1,19 +1,21 @@
 ---
 import '../styles/global.css';
-import { siteConfig, navigation, footer } from '../data/content';
+import { siteConfig, translations } from '../data/content';
+
 interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
+const currentYear = new Date().getFullYear();
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="ms">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={siteConfig.tagline} />
+    <meta name="description" content={translations.ms.tagline} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title} | {siteConfig.name}</title>
   </head>
@@ -27,23 +29,43 @@ const { title } = Astro.props;
             {siteConfig.name}
           </a>
           <div class="hidden md:flex space-x-8">
-            {
-              navigation.map((item) => (
-                <a
-                  href={item.href}
-                  class="text-gray-700 hover:text-primary-600 transition-colors"
-                >
-                  {item.label}
-                </a>
-              ))
-            }
+            <a
+              href="/"
+              class="text-gray-700 hover:text-primary-600 transition-colors"
+              data-i18n="nav.home">Laman Utama</a
+            >
+            <a
+              href="/about"
+              class="text-gray-700 hover:text-primary-600 transition-colors"
+              data-i18n="nav.about">Tentang Kami</a
+            >
+            <a
+              href="/services"
+              class="text-gray-700 hover:text-primary-600 transition-colors"
+              data-i18n="nav.services">Perkhidmatan</a
+            >
+            <a
+              href="/contact"
+              class="text-gray-700 hover:text-primary-600 transition-colors"
+              data-i18n="nav.contact">Hubungi</a
+            >
           </div>
-          <a
-            href="/contact"
-            class="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors"
-          >
-            Contact Us
-          </a>
+          <div class="flex items-center space-x-4">
+            <button
+              id="lang-toggle"
+              class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors border border-gray-300 rounded px-3 py-1"
+              aria-label="Toggle language"
+            >
+              <span id="lang-label">EN</span>
+            </button>
+            <a
+              href="/contact"
+              class="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors hidden sm:inline-block"
+              data-i18n="nav.contactBtn"
+            >
+              Hubungi Kami
+            </a>
+          </div>
         </div>
       </nav>
     </header>
@@ -57,27 +79,53 @@ const { title } = Astro.props;
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <h3 class="text-lg font-semibold mb-4">{siteConfig.name}</h3>
-            <p class="text-gray-400">{footer.description}</p>
+            <p class="text-gray-400" data-i18n="footer.description">
+              Perkhidmatan perundingan tanah profesional membantu pelanggan
+              menavigasi landskap hartanah Malaysia dengan keyakinan.
+            </p>
           </div>
           <div>
-            <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+            <h3
+              class="text-lg font-semibold mb-4"
+              data-i18n="footer.quickLinks"
+            >
+              Pautan Pantas
+            </h3>
             <ul class="space-y-2">
-              {
-                footer.quickLinks.map((link) => (
-                  <li>
-                    <a
-                      href={link.href}
-                      class="text-gray-400 hover:text-white transition-colors"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))
-              }
+              <li>
+                <a
+                  href="/"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  data-i18n="nav.home">Laman Utama</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/about"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  data-i18n="nav.about">Tentang Kami</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/services"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  data-i18n="nav.services">Perkhidmatan</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/contact"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  data-i18n="nav.contact">Hubungi</a
+                >
+              </li>
             </ul>
           </div>
           <div>
-            <h3 class="text-lg font-semibold mb-4">Contact</h3>
+            <h3 class="text-lg font-semibold mb-4" data-i18n="footer.contact">
+              Hubungi
+            </h3>
             <p class="text-gray-400">{siteConfig.address}</p>
             <p class="text-gray-400">{siteConfig.phone}</p>
             <p class="text-gray-400">{siteConfig.email}</p>
@@ -86,12 +134,172 @@ const { title } = Astro.props;
         <div
           class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400"
         >
-          {footer.copyright}
+          <span data-i18n="footer.copyright">
+            © {currentYear} NS Land Consultant. Hak cipta terpelihara.
+          </span>
         </div>
       </div>
     </footer>
 
-    <script>
+    <script is:inline>
+      // Translations data
+      const translations = {
+        ms: {
+          'nav.home': 'Laman Utama',
+          'nav.about': 'Tentang Kami',
+          'nav.services': 'Perkhidmatan',
+          'nav.contact': 'Hubungi',
+          'nav.contactBtn': 'Hubungi Kami',
+          'footer.description':
+            'Perkhidmatan perundingan tanah profesional membantu pelanggan menavigasi landskap hartanah Malaysia dengan keyakinan.',
+          'footer.quickLinks': 'Pautan Pantas',
+          'footer.contact': 'Hubungi',
+          'footer.copyright': `© ${new Date().getFullYear()} NS Land Consultant. Hak cipta terpelihara.`,
+          'hero.title': 'Rakan Perunding Tanah Yang Dipercayai',
+          'hero.subtitle':
+            'Panduan pakar untuk semua keperluan pembangunan tanah dan hartanah anda di seluruh Malaysia',
+          'hero.cta': 'Hubungi Kami',
+          'services.title': 'Perkhidmatan Kami',
+          'services.subtitle':
+            'Perkhidmatan perundingan tanah komprehensif disesuaikan dengan keperluan anda',
+          'cta.title': 'Sedia Untuk Memulakan?',
+          'cta.subtitle':
+            'Hubungi kami hari ini untuk perundingan percuma mengenai keperluan tanah atau hartanah anda.',
+          'cta.button': 'Hubungi Kami',
+          'whyUs.title': 'Mengapa Pilih Kami',
+          'whyUs.subtitle':
+            'Kepakaran dipercayai untuk keperluan tanah dan hartanah anda',
+          'whyUs.team': 'Pasukan Berpengalaman',
+          'whyUs.teamDesc':
+            'Tahun kepakaran dalam peraturan tanah dan hartanah Malaysia.',
+          'whyUs.partner': 'Rakan Dipercayai',
+          'whyUs.partnerDesc':
+            'Bina hubungan jangka panjang dengan perkhidmatan telus dan boleh dipercayai.',
+          'whyUs.focus': 'Fokus Pelanggan',
+          'whyUs.focusDesc':
+            'Penyelesaian disesuaikan untuk memenuhi keperluan unik anda.',
+          'about.title': 'Tentang NS Land Consultant',
+          'about.story':
+            'Ditubuhkan dengan misi untuk menyederhanakan perundingan tanah di Malaysia, NS Land Consultant telah berkembang menjadi rakan kongsi dipercayai untuk pemaju hartanah, pelabur, dan pemilik tanah. Pasukan kami menggabungkan pengetahuan tempatan yang mendalam dengan kepakaran profesional untuk memberikan hasil yang bermakna.',
+          'about.valuesTitle': 'Nilai Kami',
+          'about.value1': 'Integriti dalam setiap urusan',
+          'about.value2': 'Kecemerlangan dalam penyampaian perkhidmatan',
+          'about.value3': 'Hubungan pelanggan jangka panjang',
+          'contact.title': 'Hubungi Kami',
+          'contact.subtitle':
+            'Sedia untuk membincangkan keperluan tanah atau hartanah anda? Hubungi kami hari ini.',
+          'contact.getInTouch': 'Hubungi Kami',
+          'contact.address': 'Alamat',
+          'contact.email': 'Emel',
+          'contact.phone': 'Telefon',
+          'contact.form.name': 'Nama',
+          'contact.form.email': 'Emel',
+          'contact.form.phone': 'Telefon',
+          'contact.form.message': 'Mesej',
+          'contact.form.submit': 'Hantar Mesej',
+        },
+        en: {
+          'nav.home': 'Home',
+          'nav.about': 'About',
+          'nav.services': 'Services',
+          'nav.contact': 'Contact',
+          'nav.contactBtn': 'Contact Us',
+          'footer.description':
+            "Professional land consultancy services helping clients navigate Malaysia's property landscape with confidence.",
+          'footer.quickLinks': 'Quick Links',
+          'footer.contact': 'Contact',
+          'footer.copyright': `© ${new Date().getFullYear()} NS Land Consultant. All rights reserved.`,
+          'hero.title': 'Your Trusted Land Consultancy Partner',
+          'hero.subtitle':
+            'Expert guidance for all your land development and property needs across Malaysia',
+          'hero.cta': 'Get in Touch',
+          'services.title': 'Our Services',
+          'services.subtitle':
+            'Comprehensive land consultancy services tailored to your needs',
+          'cta.title': 'Ready to Get Started?',
+          'cta.subtitle':
+            'Contact us today for a free consultation on your land or property needs.',
+          'cta.button': 'Get in Touch',
+          'whyUs.title': 'Why Choose Us',
+          'whyUs.subtitle':
+            'Trusted expertise for your land and property needs',
+          'whyUs.team': 'Experienced Team',
+          'whyUs.teamDesc':
+            'Years of expertise in Malaysian land and property regulations.',
+          'whyUs.partner': 'Trusted Partner',
+          'whyUs.partnerDesc':
+            'Build long-term relationships with transparent, reliable service.',
+          'whyUs.focus': 'Client-Focused',
+          'whyUs.focusDesc':
+            'Tailored solutions to meet your unique requirements.',
+          'about.title': 'About NS Land Consultant',
+          'about.story':
+            'Founded with a mission to simplify land consultancy in Malaysia, NS Land Consultant has grown to become a trusted partner for property developers, investors, and landowners. Our team combines deep local knowledge with professional expertise to deliver results that matter.',
+          'about.valuesTitle': 'Our Values',
+          'about.value1': 'Integrity in every transaction',
+          'about.value2': 'Excellence in service delivery',
+          'about.value3': 'Long-term client relationships',
+          'contact.title': 'Get in Touch',
+          'contact.subtitle':
+            'Ready to discuss your land or property needs? Contact us today.',
+          'contact.getInTouch': 'Get in Touch',
+          'contact.address': 'Address',
+          'contact.email': 'Email',
+          'contact.phone': 'Phone',
+          'contact.form.name': 'Name',
+          'contact.form.email': 'Email',
+          'contact.form.phone': 'Phone',
+          'contact.form.message': 'Message',
+          'contact.form.submit': 'Send Message',
+        },
+      };
+
+      const STORAGE_KEY = 'nslc-lang';
+
+      function getStoredLang() {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        return stored === 'en' ? 'en' : 'ms';
+      }
+
+      function setStoredLang(lang) {
+        localStorage.setItem(STORAGE_KEY, lang);
+      }
+
+      function updatePageLang(lang) {
+        const t = translations[lang];
+
+        // Update all elements with data-i18n attribute
+        document.querySelectorAll('[data-i18n]').forEach((el) => {
+          const key = el.getAttribute('data-i18n');
+          if (t[key]) {
+            el.textContent = t[key];
+          }
+        });
+
+        // Update HTML lang attribute
+        document.documentElement.lang = lang;
+
+        // Update button label
+        const langLabel = document.getElementById('lang-label');
+        if (langLabel) {
+          langLabel.textContent = lang === 'ms' ? 'EN' : 'MS';
+        }
+      }
+
+      // Initialize on page load
+      const currentLang = getStoredLang();
+      updatePageLang(currentLang);
+
+      // Language toggle button
+      const langToggle = document.getElementById('lang-toggle');
+      if (langToggle) {
+        langToggle.addEventListener('click', () => {
+          const newLang = getStoredLang() === 'ms' ? 'en' : 'ms';
+          setStoredLang(newLang);
+          updatePageLang(newLang);
+        });
+      }
+
       // Scroll-reveal animations using IntersectionObserver
       const observer = new IntersectionObserver(
         (entries) => {

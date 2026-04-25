@@ -1,47 +1,86 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { services } from '../data/content';
+import { translations } from '../data/content';
+
+export function getStaticPaths() {
+  return [
+    { params: {}, props: { lang: 'ms' as const } },
+    { params: { lang: 'en' }, props: { lang: 'en' as const } },
+  ];
+}
+
+const { lang = 'ms' } = Astro.props;
+const t = translations[lang];
+
+// Helper function to get icon SVG based on service icon type
+const getIconSvg = (icon: string) => {
+  const icons: Record<string, string> = {
+    consulting:
+      'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z',
+    handshake:
+      'M16.5 13c-1.2 0-3.07.34-4.5 1-1.43-.67-3.3-1-4.5-1C5.54 13 3.76 13.88 2.75 15H2v2h.75c1.01 1.12 2.79 2 4.75 2 1.2 0 3.07-.34 4.5-1 1.43.67 3.3 1 4.5 1 1.96 0 3.74-.88 4.75-2H22v-2h-.75c-1.01-1.12-2.79-2-4.75-2zm-6.5 2c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zm9-7.5c-1.38 0-2.5-1.12-2.5-2.5S17.62 2.5 19 2.5s2.5 1.12 2.5 2.5S20.38 7.5 19 7.5zM12 7.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 2.5 12 2.5s2.5 1.12 2.5 2.5S13.38 7.5 12 7.5z',
+    family:
+      'M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z',
+    search:
+      'M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z',
+    transform:
+      'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z',
+    document:
+      'M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z',
+    megaphone:
+      'M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zM17.91 11c.55 0 1.02.41 1.1.96l.66 4.61c.17 1.24-.74 2.37-1.97 2.53-1.15.15-2.15-.66-2.3-1.78l-.48-3.78H13v3.55c0 1.32-.92 2.47-2.23 2.68-1.24.2-2.41-.64-2.68-1.85L7.19 17h-.14c-1.54 0-2.87-1.12-3.08-2.65L3.5 9.5c-.22-1.6.97-3.04 2.59-3.21 1.6-.16 3.06 1.06 3.25 2.66l.51 3.77h1.25V5c0-2.76 2.24-5 5-5s5 2.24 5 5v6.91l.23.01c.09-.01.17-.01.26-.01.55 0 1.02.41 1.1.96l.66 4.61c.17 1.24-.74 2.37-1.97 2.53-1.15.15-2.15-.66-2.3-1.78l-.48-3.78H13v3.55c0 1.32-.92 2.47-2.23 2.68-1.24.2-2.41-.64-2.68-1.85L7.19 17h-.14c-1.54 0-2.87-1.12-3.08-2.65L3.5 9.5c-.22-1.6.97-3.04 2.59-3.21 1.6-.16 3.06 1.06 3.25 2.66l.51 3.77h1.25V5c0-2.76 2.24-5 5-5s5 2.24 5 5v6.91l.23.01c.09-.01.17-.01.26-.01z',
+    building:
+      'M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm6 12h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2zm6 12h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2z',
+    users:
+      'M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z',
+    star: 'M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z',
+  };
+  return icons[icon] || icons.consulting;
+};
 ---
 
-<Layout title="Services">
+<Layout title={t.nav.services} lang={lang}>
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h1 class="reveal text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-          Our Services
+          {t.services.title}
         </h1>
         <p class="reveal text-lg text-gray-600 max-w-2xl mx-auto">
-          Professional land consultancy services to help you navigate Malaysia's
-          property landscape
+          {t.services.subtitle}
         </p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {
-          services.map((service, index) => (
-            <div
-              class={`reveal bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow delay-${(index % 2) + 1}`}
-            >
-              <div class="w-14 h-14 bg-primary-100 rounded-xl flex items-center justify-center mb-6">
-                <svg
-                  class="w-7 h-7 text-primary-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                  />
-                </svg>
+          t.services.items.map(
+            (
+              service: {
+                id: string;
+                title: string;
+                description: string;
+                icon: string;
+              },
+              index: number
+            ) => (
+              <div
+                class={`reveal bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow delay-${(index % 3) + 1}`}
+              >
+                <div class="w-14 h-14 bg-primary-100 rounded-xl flex items-center justify-center mb-6">
+                  <svg
+                    class="w-7 h-7 text-primary-600"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d={getIconSvg(service.icon)} />
+                  </svg>
+                </div>
+                <h2 class="text-xl font-semibold text-gray-900 mb-4">
+                  {service.title}
+                </h2>
+                <p class="text-gray-600">{service.description}</p>
               </div>
-              <h2 class="text-2xl font-semibold text-gray-900 mb-4">
-                {service.title}
-              </h2>
-              <p class="text-gray-600">{service.description}</p>
-            </div>
-          ))
+            )
+          )
         }
       </div>
     </div>
@@ -50,16 +89,24 @@ import { services } from '../data/content';
   <section class="reveal py-20 bg-primary-600">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
-        Need Help Choosing a Service?
+        {
+          lang === 'ms'
+            ? 'Perlukan Bantuan Memilih Perkhidmatan?'
+            : 'Need Help Choosing a Service?'
+        }
       </h2>
       <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-        Our team is ready to assist you with any questions about our services.
+        {
+          lang === 'ms'
+            ? 'Pasukan kami sedia membantu anda dengan sebarang soalan mengenai perkhidmatan kami.'
+            : 'Our team is ready to assist you with any questions about our services.'
+        }
       </p>
       <a
         href="/contact"
         class="inline-flex items-center bg-white text-primary-600 px-6 py-3 rounded-lg text-lg font-medium hover:bg-gray-100 transition-colors"
       >
-        Contact Us
+        {lang === 'ms' ? 'Hubungi Kami' : 'Contact Us'}
       </a>
     </div>
   </section>
