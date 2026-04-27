@@ -2,23 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import { translations } from '../data/content';
 
-export function getStaticPaths() {
-  return [
-    { params: {}, props: { lang: 'ms' as const } },
-    { params: { lang: 'en' }, props: { lang: 'en' as const } },
-  ];
-}
+const t = translations.ms;
 
-const { lang = 'ms' } = Astro.props;
-const t = translations[lang];
-
-// Helper function to get icon SVG based on service icon type
 const getIconSvg = (icon: string) => {
   const icons: Record<string, string> = {
     consulting:
       'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z',
     handshake:
-      'M16.5 13c-1.2 0-3.07.34-4.5 1-1.43-.67-3.3-1-4.5-1C5.54 13 3.76 13.88 2.75 15H2v2h.75c1.01 1.12 2.79 2 4.75 2 1.2 0 3.07-.34 4.5-1 1.43.67 3.3 1 4.5 1 1.96 0 3.74-.88 4.75-2H22v-2h-.75c-1.01-1.12-2.79-2-4.75-2zm-6.5 2c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zm9-7.5c-1.38 0-2.5-1.12-2.5-2.5S17.62 2.5 19 2.5s2.5 1.12 2.5 2.5S20.38 7.5 19 7.5zM12 7.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 2.5 12 2.5s2.5 1.12 2.5 2.5S13.38 7.5 12 7.5z',
+      'M16.5 13c-1.2 0-3.07.34-4.5 1-1.43-.67-3.3-1-4.5-1C5.54 13 3.76 13.88 2.75 15H2v2h.75c1.01 1.12 2.79 2 4.75 2 1.2 0 3.07-.34 4.5-1 1.43.67 3.3 1 4.5 1 1.96 0 3.74-.88 4.75-2H22v-2h-.75c-1.01-1.12-2.79-2-4.75-2zm-6.5 2c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z',
     family:
       'M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z',
     search:
@@ -39,48 +30,52 @@ const getIconSvg = (icon: string) => {
 };
 ---
 
-<Layout title={t.nav.services} lang={lang}>
+<Layout title={t.nav.services} titleKey="nav.services">
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h1 class="reveal text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <h1
+          class="reveal text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+          data-i18n="services.title"
+        >
           {t.services.title}
         </h1>
-        <p class="reveal text-lg text-gray-600 max-w-2xl mx-auto">
+        <p
+          class="reveal text-lg text-gray-600 max-w-2xl mx-auto"
+          data-i18n="services.subtitle"
+        >
           {t.services.subtitle}
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {
-          t.services.items.map(
-            (
-              service: {
-                id: string;
-                title: string;
-                description: string;
-                icon: string;
-              },
-              index: number
-            ) => (
-              <div
-                class={`reveal bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow delay-${(index % 3) + 1}`}
-              >
-                <div class="w-14 h-14 bg-primary-100 rounded-xl flex items-center justify-center mb-6">
-                  <svg
-                    class="w-7 h-7 text-primary-600"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d={getIconSvg(service.icon)} />
-                  </svg>
-                </div>
-                <h2 class="text-xl font-semibold text-gray-900 mb-4">
-                  {service.title}
-                </h2>
-                <p class="text-gray-600">{service.description}</p>
+          t.services.items.map((service, index) => (
+            <div
+              class={`reveal bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow delay-${(index % 3) + 1}`}
+            >
+              <div class="w-14 h-14 bg-primary-100 rounded-xl flex items-center justify-center mb-6">
+                <svg
+                  class="w-7 h-7 text-primary-600"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d={getIconSvg(service.icon)} />
+                </svg>
               </div>
-            )
-          )
+              <h2
+                class="text-xl font-semibold text-gray-900 mb-4"
+                data-i18n={`services.items.${index}.title`}
+              >
+                {service.title}
+              </h2>
+              <p
+                class="text-gray-600"
+                data-i18n={`services.items.${index}.description`}
+              >
+                {service.description}
+              </p>
+            </div>
+          ))
         }
       </div>
     </div>
@@ -88,25 +83,24 @@ const getIconSvg = (icon: string) => {
 
   <section class="reveal py-20 bg-primary-600">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
-        {
-          lang === 'ms'
-            ? 'Perlukan Bantuan Memilih Perkhidmatan?'
-            : 'Need Help Choosing a Service?'
-        }
+      <h2
+        class="text-3xl md:text-4xl font-bold text-white mb-6"
+        data-i18n="services.helpTitle"
+      >
+        {t.services.helpTitle}
       </h2>
-      <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-        {
-          lang === 'ms'
-            ? 'Pasukan kami sedia membantu anda dengan sebarang soalan mengenai perkhidmatan kami.'
-            : 'Our team is ready to assist you with any questions about our services.'
-        }
+      <p
+        class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto"
+        data-i18n="services.helpSubtitle"
+      >
+        {t.services.helpSubtitle}
       </p>
       <a
         href="/contact"
         class="inline-flex items-center bg-white text-primary-600 px-6 py-3 rounded-lg text-lg font-medium hover:bg-gray-100 transition-colors"
+        data-i18n="services.helpButton"
       >
-        {lang === 'ms' ? 'Hubungi Kami' : 'Contact Us'}
+        {t.services.helpButton}
       </a>
     </div>
   </section>

@@ -1,25 +1,34 @@
 ---
 import '../styles/global.css';
-import { siteConfig, translations } from '../data/content';
+import { defaultLang, siteConfig, translations } from '../data/content';
+import type { Lang } from '../data/content';
 
 interface Props {
   title: string;
+  titleKey?: string;
+  lang?: Lang;
+  description?: string;
 }
 
-const { title } = Astro.props;
+const { title, titleKey, lang = defaultLang, description } = Astro.props;
 const currentYear = new Date().getFullYear();
+const pageDescription = description ?? translations[lang].tagline;
+const serializedTranslations = JSON.stringify(translations).replaceAll(
+  '<',
+  '\\u003c'
+);
 ---
 
 <!doctype html>
-<html lang="ms">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={translations.ms.tagline} />
+    <meta name="description" content={pageDescription} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title} | {siteConfig.name}</title>
   </head>
-  <body class="bg-white text-gray-900">
+  <body class="bg-white text-gray-900" data-page-title-key={titleKey}>
     <header
       class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50"
     >
@@ -143,118 +152,14 @@ const currentYear = new Date().getFullYear();
 
     <script is:inline>
       // Translations data
-      const translations = {
-        ms: {
-          'nav.home': 'Laman Utama',
-          'nav.about': 'Tentang Kami',
-          'nav.services': 'Perkhidmatan',
-          'nav.contact': 'Hubungi',
-          'nav.contactBtn': 'Hubungi Kami',
-          'footer.description':
-            'Perkhidmatan perundingan tanah profesional membantu pelanggan menavigasi landskap hartanah Malaysia dengan keyakinan.',
-          'footer.quickLinks': 'Pautan Pantas',
-          'footer.contact': 'Hubungi',
-          'footer.copyright': `© ${new Date().getFullYear()} NS Land Consultant. Hak cipta terpelihara.`,
-          'hero.title': 'Rakan Perunding Tanah Yang Dipercayai',
-          'hero.subtitle':
-            'Panduan pakar untuk semua keperluan pembangunan tanah dan hartanah anda di seluruh Malaysia',
-          'hero.cta': 'Hubungi Kami',
-          'services.title': 'Perkhidmatan Kami',
-          'services.subtitle':
-            'Perkhidmatan perundingan tanah komprehensif disesuaikan dengan keperluan anda',
-          'cta.title': 'Sedia Untuk Memulakan?',
-          'cta.subtitle':
-            'Hubungi kami hari ini untuk perundingan percuma mengenai keperluan tanah atau hartanah anda.',
-          'cta.button': 'Hubungi Kami',
-          'whyUs.title': 'Mengapa Pilih Kami',
-          'whyUs.subtitle':
-            'Kepakaran dipercayai untuk keperluan tanah dan hartanah anda',
-          'whyUs.team': 'Pasukan Berpengalaman',
-          'whyUs.teamDesc':
-            'Tahun kepakaran dalam peraturan tanah dan hartanah Malaysia.',
-          'whyUs.partner': 'Rakan Dipercayai',
-          'whyUs.partnerDesc':
-            'Bina hubungan jangka panjang dengan perkhidmatan telus dan boleh dipercayai.',
-          'whyUs.focus': 'Fokus Pelanggan',
-          'whyUs.focusDesc':
-            'Penyelesaian disesuaikan untuk memenuhi keperluan unik anda.',
-          'about.title': 'Tentang NS Land Consultant',
-          'about.story':
-            'Ditubuhkan dengan misi untuk menyederhanakan perundingan tanah di Malaysia, NS Land Consultant telah berkembang menjadi rakan kongsi dipercayai untuk pemaju hartanah, pelabur, dan pemilik tanah. Pasukan kami menggabungkan pengetahuan tempatan yang mendalam dengan kepakaran profesional untuk memberikan hasil yang bermakna.',
-          'about.valuesTitle': 'Nilai Kami',
-          'about.value1': 'Integriti dalam setiap urusan',
-          'about.value2': 'Kecemerlangan dalam penyampaian perkhidmatan',
-          'about.value3': 'Hubungan pelanggan jangka panjang',
-          'contact.title': 'Hubungi Kami',
-          'contact.subtitle':
-            'Sedia untuk membincangkan keperluan tanah atau hartanah anda? Hubungi kami hari ini.',
-          'contact.getInTouch': 'Hubungi Kami',
-          'contact.address': 'Alamat',
-          'contact.email': 'Emel',
-          'contact.phone': 'Telefon',
-          'contact.form.name': 'Nama',
-          'contact.form.email': 'Emel',
-          'contact.form.phone': 'Telefon',
-          'contact.form.message': 'Mesej',
-          'contact.form.submit': 'Hantar Mesej',
-        },
-        en: {
-          'nav.home': 'Home',
-          'nav.about': 'About',
-          'nav.services': 'Services',
-          'nav.contact': 'Contact',
-          'nav.contactBtn': 'Contact Us',
-          'footer.description':
-            "Professional land consultancy services helping clients navigate Malaysia's property landscape with confidence.",
-          'footer.quickLinks': 'Quick Links',
-          'footer.contact': 'Contact',
-          'footer.copyright': `© ${new Date().getFullYear()} NS Land Consultant. All rights reserved.`,
-          'hero.title': 'Your Trusted Land Consultancy Partner',
-          'hero.subtitle':
-            'Expert guidance for all your land development and property needs across Malaysia',
-          'hero.cta': 'Get in Touch',
-          'services.title': 'Our Services',
-          'services.subtitle':
-            'Comprehensive land consultancy services tailored to your needs',
-          'cta.title': 'Ready to Get Started?',
-          'cta.subtitle':
-            'Contact us today for a free consultation on your land or property needs.',
-          'cta.button': 'Get in Touch',
-          'whyUs.title': 'Why Choose Us',
-          'whyUs.subtitle':
-            'Trusted expertise for your land and property needs',
-          'whyUs.team': 'Experienced Team',
-          'whyUs.teamDesc':
-            'Years of expertise in Malaysian land and property regulations.',
-          'whyUs.partner': 'Trusted Partner',
-          'whyUs.partnerDesc':
-            'Build long-term relationships with transparent, reliable service.',
-          'whyUs.focus': 'Client-Focused',
-          'whyUs.focusDesc':
-            'Tailored solutions to meet your unique requirements.',
-          'about.title': 'About NS Land Consultant',
-          'about.story':
-            'Founded with a mission to simplify land consultancy in Malaysia, NS Land Consultant has grown to become a trusted partner for property developers, investors, and landowners. Our team combines deep local knowledge with professional expertise to deliver results that matter.',
-          'about.valuesTitle': 'Our Values',
-          'about.value1': 'Integrity in every transaction',
-          'about.value2': 'Excellence in service delivery',
-          'about.value3': 'Long-term client relationships',
-          'contact.title': 'Get in Touch',
-          'contact.subtitle':
-            'Ready to discuss your land or property needs? Contact us today.',
-          'contact.getInTouch': 'Get in Touch',
-          'contact.address': 'Address',
-          'contact.email': 'Email',
-          'contact.phone': 'Phone',
-          'contact.form.name': 'Name',
-          'contact.form.email': 'Email',
-          'contact.form.phone': 'Phone',
-          'contact.form.message': 'Message',
-          'contact.form.submit': 'Send Message',
-        },
-      };
+      const translations = { serializedTranslations };
+      const currentYear = { currentYear };
 
       const STORAGE_KEY = 'nslc-lang';
+
+      function formatTranslation(value) {
+        return value.replaceAll('{year}', String(currentYear));
+      }
 
       function getStoredLang() {
         const stored = localStorage.getItem(STORAGE_KEY);
@@ -267,17 +172,41 @@ const currentYear = new Date().getFullYear();
 
       function updatePageLang(lang) {
         const t = translations[lang];
+        if (!t) return;
+
+        document.documentElement.lang = lang;
 
         // Update all elements with data-i18n attribute
         document.querySelectorAll('[data-i18n]').forEach((el) => {
           const key = el.getAttribute('data-i18n');
-          if (t[key]) {
-            el.textContent = t[key];
+          if (!key) return;
+
+          const value = key.split('.').reduce((acc, part) => {
+            if (acc && typeof acc === 'object') {
+              return acc[part];
+            }
+            return undefined;
+          }, t);
+
+          if (typeof value === 'string') {
+            el.textContent = formatTranslation(value);
           }
         });
 
-        // Update HTML lang attribute
-        document.documentElement.lang = lang;
+        // Update document title when a localized page title is provided.
+        const titleKey = document.body.getAttribute('data-page-title-key');
+        if (titleKey) {
+          const titleValue = titleKey.split('.').reduce((acc, part) => {
+            if (acc && typeof acc === 'object') {
+              return acc[part];
+            }
+            return undefined;
+          }, t);
+
+          if (typeof titleValue === 'string') {
+            document.title = `${formatTranslation(titleValue)} | NS Land Consultant`;
+          }
+        }
 
         // Update button label
         const langLabel = document.getElementById('lang-label');

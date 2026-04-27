@@ -1,34 +1,35 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { translations, siteConfig } from '../data/content';
+import { siteConfig, translations } from '../data/content';
 
-export function getStaticPaths() {
-  return [
-    { params: {}, props: { lang: 'ms' as const } },
-    { params: { lang: 'en' }, props: { lang: 'en' as const } },
-  ];
-}
-
-const { lang = 'ms' } = Astro.props;
-const t = translations[lang];
+const t = translations.ms;
 ---
 
-<Layout title={t.nav.contact} lang={lang}>
+<Layout title={t.nav.contact} titleKey="nav.contact">
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h1 class="reveal text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <h1
+          class="reveal text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+          data-i18n="contact.title"
+        >
           {t.contact.title}
         </h1>
-        <p class="reveal text-lg text-gray-600 max-w-2xl mx-auto">
+        <p
+          class="reveal text-lg text-gray-600 max-w-2xl mx-auto"
+          data-i18n="contact.subtitle"
+        >
           {t.contact.subtitle}
         </p>
       </div>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <div class="reveal">
           <div class="bg-gray-50 rounded-xl p-8">
-            <h2 class="text-2xl font-semibold text-gray-900 mb-6">
-              {lang === 'ms' ? 'Hubungi Kami' : 'Get in Touch'}
+            <h2
+              class="text-2xl font-semibold text-gray-900 mb-6"
+              data-i18n="contact.getInTouch"
+            >
+              {t.contact.getInTouch}
             </h2>
             <div class="space-y-4">
               <div class="flex items-start">
@@ -51,8 +52,11 @@ const t = translations[lang];
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                 </svg>
                 <div class="ml-4">
-                  <p class="font-medium text-gray-900">
-                    {lang === 'ms' ? 'Alamat' : 'Address'}
+                  <p
+                    class="font-medium text-gray-900"
+                    data-i18n="contact.address"
+                  >
+                    {t.contact.address}
                   </p>
                   <p class="text-gray-600">{siteConfig.address}</p>
                 </div>
@@ -72,8 +76,11 @@ const t = translations[lang];
                   ></path>
                 </svg>
                 <div class="ml-4">
-                  <p class="font-medium text-gray-900">
-                    {lang === 'ms' ? 'Emel' : 'Email'}
+                  <p
+                    class="font-medium text-gray-900"
+                    data-i18n="contact.email"
+                  >
+                    {t.contact.email}
                   </p>
                   <p class="text-gray-600">{siteConfig.email}</p>
                 </div>
@@ -93,8 +100,11 @@ const t = translations[lang];
                   ></path>
                 </svg>
                 <div class="ml-4">
-                  <p class="font-medium text-gray-900">
-                    {lang === 'ms' ? 'Telefon' : 'Phone'}
+                  <p
+                    class="font-medium text-gray-900"
+                    data-i18n="contact.phone"
+                  >
+                    {t.contact.phone}
                   </p>
                   <p class="text-gray-600">{siteConfig.phone}</p>
                 </div>
@@ -108,6 +118,7 @@ const t = translations[lang];
               <label
                 for="name"
                 class="block text-sm font-medium text-gray-700 mb-2"
+                data-i18n="contact.form.name"
               >
                 {t.contact.form.name}
               </label>
@@ -123,6 +134,7 @@ const t = translations[lang];
               <label
                 for="email"
                 class="block text-sm font-medium text-gray-700 mb-2"
+                data-i18n="contact.form.email"
               >
                 {t.contact.form.email}
               </label>
@@ -138,6 +150,7 @@ const t = translations[lang];
               <label
                 for="phone"
                 class="block text-sm font-medium text-gray-700 mb-2"
+                data-i18n="contact.form.phone"
               >
                 {t.contact.form.phone}
               </label>
@@ -152,6 +165,7 @@ const t = translations[lang];
               <label
                 for="message"
                 class="block text-sm font-medium text-gray-700 mb-2"
+                data-i18n="contact.form.message"
               >
                 {t.contact.form.message}
               </label>
@@ -166,6 +180,7 @@ const t = translations[lang];
             <button
               type="submit"
               class="w-full bg-primary-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-700 transition-colors"
+              data-i18n="contact.form.submit"
             >
               {t.contact.form.submit}
             </button>

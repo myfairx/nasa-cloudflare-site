@@ -29,6 +29,11 @@ export const translations = {
       title: 'Perkhidmatan Kami',
       subtitle:
         'Perkhidmatan perundingan tanah komprehensif disesuaikan dengan keperluan anda',
+      viewAll: 'Lihat semua perkhidmatan →',
+      helpTitle: 'Perlukan Bantuan Memilih Perkhidmatan?',
+      helpSubtitle:
+        'Pasukan kami sedia membantu anda dengan sebarang soalan mengenai perkhidmatan kami.',
+      helpButton: 'Hubungi Kami',
       items: [
         {
           id: 'consultation',
@@ -127,6 +132,7 @@ export const translations = {
       title: 'Tentang NS Land Consultant',
       story:
         'Ditubuhkan dengan misi untuk menyederhanakan perundingan tanah di Malaysia, NS Land Consultant telah berkembang menjadi rakan kongsi dipercayai untuk pemaju hartanah, pelabur, dan pemilik tanah. Pasukan kami menggabungkan pengetahuan tempatan yang mendalam dengan kepakaran profesional untuk memberikan hasil yang bermakna.',
+      valuesTitle: 'Nilai Kami',
       values: [
         'Integriti dalam setiap urusan',
         'Kecemerlangan dalam penyampaian perkhidmatan',
@@ -137,6 +143,10 @@ export const translations = {
       title: 'Hubungi Kami',
       subtitle:
         'Sedia untuk membincangkan keperluan tanah atau hartanah anda? Hubungi kami hari ini.',
+      getInTouch: 'Hubungi Kami',
+      address: 'Alamat',
+      email: 'Emel',
+      phone: 'Telefon',
       form: {
         name: 'Nama',
         email: 'Emel',
@@ -178,6 +188,11 @@ export const translations = {
       title: 'Our Services',
       subtitle:
         'Comprehensive land consultancy services tailored to your needs',
+      viewAll: 'View all services →',
+      helpTitle: 'Need Help Choosing a Service?',
+      helpSubtitle:
+        'Our team is ready to assist you with any questions about our services.',
+      helpButton: 'Contact Us',
       items: [
         {
           id: 'consultation',
@@ -275,6 +290,7 @@ export const translations = {
       title: 'About NS Land Consultant',
       story:
         'Founded with a mission to simplify land consultancy in Malaysia, NS Land Consultant has grown to become a trusted partner for property developers, investors, and landowners. Our team combines deep local knowledge with professional expertise to deliver results that matter.',
+      valuesTitle: 'Our Values',
       values: [
         'Integrity in every transaction',
         'Excellence in service delivery',
@@ -285,6 +301,10 @@ export const translations = {
       title: 'Get in Touch',
       subtitle:
         'Ready to discuss your land or property needs? Contact us today.',
+      getInTouch: 'Get in Touch',
+      address: 'Address',
+      email: 'Email',
+      phone: 'Phone',
       form: {
         name: 'Name',
         email: 'Email',
