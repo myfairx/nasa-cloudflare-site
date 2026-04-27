@@ -1,7 +1,7 @@
 # NS Land Consultant - Task Tracker
 
-**Last Updated:** 28 April 2026  
-**Status:** In Progress
+**Last Updated:** 28 April 2026
+**Status:** UI/UX Implementation Phase
 
 ---
 
@@ -119,6 +119,113 @@
 
 ---
 
+## Phase H: UI/UX Implementation ⏳ IN PROGRESS
+
+See `docs/UI_UX_PLAN.md` for full specifications.
+
+### Phase 1: Core Structure (CRITICAL) - Partially Done
+
+**Mobile Navigation (Hamburger Menu) ✅ DONE**
+- Slide-in drawer from right (300px width)
+- Backdrop blur when open
+- Language toggle inside drawer
+- Close on backdrop tap or swipe right
+- Mobile menu closes on Escape key and backdrop click
+- Mobile menu prevents body scroll when open
+
+**Services Page Redesign (Category Accordion) ⏳ PENDING**
+- Current: Flat 3-column grid with 10 services
+- Required: Category-based accordion (3 categories: Perundingan, Pengurusan, Pemasaran)
+- Mobile: Accordion with expandable sections
+- Desktop: Tab navigation or sticky sidebar
+- **Status:** NOT IMPLEMENTED - needs complete rebuild
+
+**Contact Page Mobile Layout ⏳ PARTIAL**
+- Form left, info right on desktop ✅
+- Stacked on mobile (form above info) - needs CSS verification
+- Missing: Business hours section
+- Missing: WhatsApp quick action button
+
+**Footer Responsive Layout ✅ DONE**
+- 3-column grid that stacks on mobile
+- Social media icons row
+
+### Phase 2: Visual Polish ⏳ PENDING
+
+**Hero Background Image Support ⏳ PENDING**
+- Current: Plain gradient (`bg-gradient-to-br from-primary-50 to-white`)
+- Required: Background image with dark gradient overlay
+- Image specs: 1920x1080 (desktop), 768x1024 (mobile), WebP/JPG, <200KB
+- **Status:** NOT IMPLEMENTED
+
+**Service Card Enhancements (Homepage) ⏳ PENDING**
+- Current: 3-column grid
+- Required (mobile): Horizontal scroll with snap or stacked cards
+- Card specs (mobile): 280px width, scroll-snap-type: x mandatory
+- **Status:** NOT IMPLEMENTED
+
+**About Page Stats/Trust Indicators ⏳ PENDING**
+- Required: Stats row (e.g., "500+ Transaksi | 15+ Tahun Pengalaman")
+- Required: Large team/office photo
+- Stats: 3-column grid with icon + number + label
+- **Status:** NOT IMPLEMENTED
+
+**Scroll Animations ⏳ PARTIAL**
+- Current: Fade-in on scroll (IntersectionObserver)
+- Enhancement needed: Add `translateY(20px → 0)` transition
+- Duration: 600ms, easing: cubic-bezier(0.4, 0, 0.2, 1)
+- **Status:** Fade works, translateY enhancement NOT IMPLEMENTED
+
+### Phase 3: Enhancements ⏳ PENDING
+
+- [ ] Loading/skeleton states - NOT IMPLEMENTED
+- [ ] Form validation UI - NOT IMPLEMENTED
+- [ ] Social media icons with actual links - PENDING client input
+- [ ] SEO image optimizations - PENDING (OG image missing)
+
+### Section 15: Promo Modal ⏳ PENDING
+
+**New Component Required:**
+- [ ] Create `src/components/PromoModal.astro`
+- [ ] Add `promotions` data structure to `content.ts`
+- [ ] Create `/public/promos/` folder for images
+
+**Features:**
+- Shows only on homepage after 2 second delay
+- Once per visitor per day (localStorage)
+- Auto-rotates if multiple images (every 5 seconds)
+- Close: X button, backdrop click, ESC key
+- Touch/swipe support on mobile
+- Desktop: Max 600px width, centered
+- Mobile: 92% viewport width
+
+**Data Structure in content.ts:**
+```typescript
+export const promotions = {
+  enabled: true,
+  showOn: ['home'],
+  settings: { delay: 2000, oncePerDay: true, storageKey: 'nslc-promo-shown', expiryDays: 30 },
+  images: [{ src: '/promos/promo-1.jpg', alt: { ms: '', en: '' }, link: '/contact', startDate: '2026-04-01', endDate: '2026-05-31' }],
+  carousel: { enabled: false, interval: 5000, transition: 400, showDots: true, pauseOnHover: true },
+};
+```
+
+### Accessibility (WCAG 2.1 AA) ⏳ PARTIAL
+
+- [x] Visible focus states (ring-2 ring-primary-500)
+- [ ] Skip-to-content link - NOT IMPLEMENTED
+- [ ] Touch targets ≥ 44px - needs verification
+- [x] Heading hierarchy (h1 → h2 → h3) - verified
+- [ ] Alt text for images - needs verification
+
+### Other UI/UX Items ⏳ PENDING
+
+- [ ] Back-to-top button (sticky footer)
+- [ ] Sticky header behavior (hide on scroll down, show on scroll up)
+- [ ] WhatsApp floating button on mobile
+
+---
+
 ## Content Status
 
 ### `[PLACEHOLDER]` Items (Can launch with these)
@@ -141,6 +248,8 @@
 - [ ] Turnstile Site Key
 - [ ] Worker URL
 - [ ] Resend domain verification
+- [ ] OG image (`/public/images/og-default.jpg`)
+- [ ] Promo images (`/public/promos/promo-1.jpg`)
 
 ---
 
@@ -161,7 +270,8 @@ Run these commands after changes:
    - [ ] Client provides all `[NEEDS CLIENT INPUT]` content
    - [ ] Replace all placeholder markers
    - [ ] Upload logo to `/public/logo.svg` (optional)
-   - [ ] Upload OG image to `/public/images/og-default.jpg` (optional)
+   - [ ] Upload OG image to `/public/images/og-default.jpg`
+   - [ ] Complete Phase H (UI/UX) implementation
 
 2. **Deploy Worker:**
    - [ ] `npx wrangler deploy`
@@ -180,12 +290,17 @@ Run these commands after changes:
    - [ ] Test language switching
    - [ ] Test mobile navigation
    - [ ] Check SEO meta tags in browser dev tools
+   - [ ] Promo modal (if enabled)
+   - [ ] Google Mobile-Friendly Test
+   - [ ] Lighthouse accessibility score > 90
 
 ---
 
 ## Notes
 
 - **Phase G (Cleanup)** can be done after client content is finalized
+- **Phase H (UI/UX)** is the current active work - see `docs/UI_UX_PLAN.md`
 - All placeholder markers intentionally left in place as audit trail
 - Language switching uses URL query params (`?lang=en`) which is SEO-friendly
 - Contact form degrades gracefully if JavaScript fails (shows error message)
+- Phase H (UI/UX) implementation is the priority before Phase G cleanup

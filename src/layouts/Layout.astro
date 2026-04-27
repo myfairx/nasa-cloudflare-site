@@ -428,85 +428,119 @@ const serializedTranslations = JSON.stringify(translations).replaceAll(
         }
       }
 
-      // Mobile Menu functionality
-      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-      const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
-      const mobileMenuBackdrop = document.getElementById(
-        'mobile-menu-backdrop'
-      );
-      const mobileMenuPanel = document.getElementById('mobile-menu-panel');
-      const mobileMenuClose = document.getElementById('mobile-menu-close');
-      const menuIcon = document.getElementById('menu-icon');
-      const closeIcon = document.getElementById('close-icon');
+      // Mobile Menu functionality - wrapped in DOMContentLoaded to ensure elements exist
+      function initMobileMenu() {
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
+        const mobileMenuBackdrop = document.getElementById(
+          'mobile-menu-backdrop'
+        );
+        const mobileMenuPanel = document.getElementById('mobile-menu-panel');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
 
-      function openMobileMenu() {
-        if (!mobileMenuDrawer || !mobileMenuBackdrop || !mobileMenuPanel)
-          return;
-
-        mobileMenuDrawer.setAttribute('aria-hidden', 'false');
-        mobileMenuBtn?.setAttribute('aria-expanded', 'true');
-
-        // Show backdrop
-        mobileMenuBackdrop.classList.remove('opacity-0');
-        mobileMenuBackdrop.classList.add('opacity-100');
-
-        // Slide in panel
-        mobileMenuPanel.classList.remove('translate-x-full');
-        mobileMenuPanel.classList.add('translate-x-0');
-
-        // Toggle icons
-        menuIcon?.classList.add('hidden');
-        closeIcon?.classList.remove('hidden');
-
-        // Prevent body scroll
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeMobileMenu() {
-        if (!mobileMenuDrawer || !mobileMenuBackdrop || !mobileMenuPanel)
-          return;
-
-        mobileMenuDrawer.setAttribute('aria-hidden', 'true');
-        mobileMenuBtn?.setAttribute('aria-expanded', 'false');
-
-        // Hide backdrop
-        mobileMenuBackdrop.classList.remove('opacity-100');
-        mobileMenuBackdrop.classList.add('opacity-0');
-
-        // Slide out panel
-        mobileMenuPanel.classList.remove('translate-x-0');
-        mobileMenuPanel.classList.add('translate-x-full');
-
-        // Toggle icons
-        menuIcon?.classList.remove('hidden');
-        closeIcon?.classList.add('hidden');
-
-        // Restore body scroll
-        document.body.style.overflow = '';
-      }
-
-      // Mobile menu event listeners
-      mobileMenuBtn?.addEventListener('click', () => {
-        const isOpen = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
-        if (isOpen) {
-          closeMobileMenu();
-        } else {
-          openMobileMenu();
-        }
-      });
-
-      mobileMenuClose?.addEventListener('click', closeMobileMenu);
-      mobileMenuBackdrop?.addEventListener('click', closeMobileMenu);
-
-      // Close menu on escape key
-      document.addEventListener('keydown', (e) => {
         if (
-          e.key === 'Escape' &&
-          mobileMenuBtn?.getAttribute('aria-expanded') === 'true'
+          !mobileMenuBtn ||
+          !mobileMenuDrawer ||
+          !mobileMenuBackdrop ||
+          !mobileMenuPanel
         ) {
-          closeMobileMenu();
+          console.error('Mobile menu elements not found');
+          return;
         }
-      });
+
+        let isMenuOpen = false;
+
+        function openMobileMenu() {
+          isMenuOpen = true;
+
+          mobileMenuDrawer.setAttribute('aria-hidden', 'false');
+          mobileMenuBtn.setAttribute('aria-expanded', 'true');
+
+          // Show backdrop
+          mobileMenuBackdrop.classList.remove('opacity-0');
+          mobileMenuBackdrop.classList.add('opacity-100');
+
+          // Slide in panel
+          mobileMenuPanel.classList.remove('translate-x-full');
+          mobileMenuPanel.classList.add('translate-x-0');
+
+          // Toggle icons
+          menuIcon?.classList.add('hidden');
+          closeIcon?.classList.remove('hidden');
+
+          // Prevent body scroll
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+          isMenuOpen = false;
+
+          mobileMenuDrawer.setAttribute('aria-hidden', 'true');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+
+          // Hide backdrop
+          mobileMenuBackdrop.classList.remove('opacity-100');
+          mobileMenuBackdrop.classList.add('opacity-0');
+
+          // Slide out panel
+          mobileMenuPanel.classList.remove('translate-x-0');
+          mobileMenuPanel.classList.add('translate-x-full');
+
+          // Toggle icons
+          menuIcon?.classList.remove('hidden');
+          closeIcon?.classList.add('hidden');
+
+          // Restore body scroll
+          document.body.style.overflow = '';
+        }
+
+        // Toggle menu on hamburger button click
+        mobileMenuBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          if (isMenuOpen) {
+            closeMobileMenu();
+          } else {
+            openMobileMenu();
+          }
+        });
+
+        // Close on X button
+        mobileMenuClose?.addEventListener('click', function (e) {
+          e.preventDefault();
+          closeMobileMenu();
+        });
+
+        // Close on backdrop click
+        mobileMenuBackdrop.addEventListener('click', function (e) {
+          e.preventDefault();
+          closeMobileMenu();
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && isMenuOpen) {
+            closeMobileMenu();
+          }
+        });
+
+        // Close menu when clicking a nav link (optional - for same-page navigation)
+        const drawerNavLinks = mobileMenuDrawer.querySelectorAll('a');
+        drawerNavLinks.forEach(function (link) {
+          link.addEventListener('click', function () {
+            closeMobileMenu();
+          });
+        });
+      }
+
+      // Initialize when DOM is ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMobileMenu);
+      } else {
+        initMobileMenu();
+      }
 
       // Initialize with server-rendered language (from prop)
       const initialLang = '{lang}';
