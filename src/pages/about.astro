@@ -1,11 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { translations } from '../data/content';
+import { translations, defaultLang, type Lang } from '../data/content';
 
-const t = translations.ms;
+// Get language from URL query param or default
+const lang: Lang = (Astro.url.searchParams.get('lang') as Lang) || defaultLang;
+const t = translations[lang];
 ---
 
-<Layout title={t.nav.about} titleKey="nav.about">
+<Layout title={t.nav.about} titleKey="nav.about" pageType="about" lang={lang}>
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl">

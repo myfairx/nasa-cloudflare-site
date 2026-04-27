@@ -1,11 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { translations } from '../data/content';
+import { translations, defaultLang, type Lang } from '../data/content';
 
-const t = translations.ms;
+// Get language from URL query param or default
+const lang: Lang = (Astro.url.searchParams.get('lang') as Lang) || defaultLang;
+const t = translations[lang];
 ---
 
-<Layout title={t.nav.home} titleKey="nav.home">
+<Layout title={t.nav.home} titleKey="nav.home" pageType="home" lang={lang}>
   <section
     class="reveal relative bg-gradient-to-br from-primary-50 to-white py-20 lg:py-32"
   >

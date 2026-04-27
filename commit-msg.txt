@@ -1,0 +1,10 @@
+feat: add SEO metadata, fix hardcoded i18n text, remove under construction page
+
+- Add OpenGraph and Twitter Card meta tags to Layout.astro
+- Add canonical URL support using seo object from content.ts
+- Fix hardcoded Malay text in Layout.astro navigation, footer, CTA
+- All pages now pass pageType prop for automatic SEO metadata
+- Add is:inline directive to script to silence Astro hint
+- Remove public/index.html under construction page blocking build
+- Clean up old doc/ folder, moved files to docs/
+- Add CONTENT_NEEDED.md and IMAGES_NEEDED.md client checklists

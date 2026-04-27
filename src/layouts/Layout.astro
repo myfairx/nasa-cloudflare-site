@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { defaultLang, siteConfig, translations } from '../data/content';
+import { defaultLang, siteConfig, translations, seo } from '../data/content';
 import type { Lang } from '../data/content';
 
 interface Props {
@@ -8,12 +8,28 @@ interface Props {
   titleKey?: string;
   lang?: Lang;
   description?: string;
+  ogImage?: string;
+  canonicalUrl?: string;
+  pageType?: 'home' | 'about' | 'services' | 'contact';
 }
 
-const { title, titleKey, lang = defaultLang, description } = Astro.props;
+const {
+  title,
+  titleKey,
+  lang = defaultLang,
+  description,
+  ogImage,
+  canonicalUrl,
+  pageType,
+} = Astro.props;
 const currentYear = new Date().getFullYear();
 const t = translations[lang];
-const pageDescription = description ?? (t as any).tagline ?? '';
+const currentSeo = pageType ? seo[pageType][lang] : null;
+const pageDescription =
+  description ?? currentSeo?.description ?? (t as any).tagline ?? '';
+const pageTitle = title ?? currentSeo?.title ?? siteConfig.name;
+const canonical = canonicalUrl ?? `${seo.global.siteUrl}${Astro.url.pathname}`;
+const ogImageUrl = ogImage ?? seo.global.defaultOgImage;
 const serializedTranslations = JSON.stringify(translations).replaceAll(
   '<',
   '\\u003c'
@@ -26,8 +42,27 @@ const serializedTranslations = JSON.stringify(translations).replaceAll(
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={pageDescription} />
+    <meta name="theme-color" content={seo.global.themeColor} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title} | {siteConfig.name}</title>
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={`${seo.global.siteUrl}${ogImageUrl}`} />
+    <meta property="og:site_name" content={seo.global.siteName} />
+    <meta property="og:locale" content={lang === 'ms' ? 'ms_MY' : 'en_US'} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonical} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={`${seo.global.siteUrl}${ogImageUrl}`} />
+
+    <title>{pageTitle}</title>
   </head>
   <body class="bg-white text-gray-900" data-page-title-key={titleKey}>
     <header
@@ -44,40 +79,41 @@ const serializedTranslations = JSON.stringify(translations).replaceAll(
             <a
               href="/"
               class="text-gray-700 hover:text-primary-600 transition-colors"
-              data-i18n="nav.home">Laman Utama</a
+              data-i18n="nav.home">{t.nav.home}</a
             >
             <a
               href="/about"
               class="text-gray-700 hover:text-primary-600 transition-colors"
-              data-i18n="nav.about">Tentang Kami</a
+              data-i18n="nav.about">{t.nav.about}</a
             >
             <a
               href="/services"
               class="text-gray-700 hover:text-primary-600 transition-colors"
-              data-i18n="nav.services">Perkhidmatan</a
+              data-i18n="nav.services">{t.nav.services}</a
             >
             <a
               href="/contact"
               class="text-gray-700 hover:text-primary-600 transition-colors"
-              data-i18n="nav.contact">Hubungi</a
+              data-i18n="nav.contact">{t.nav.contact}</a
             >
           </div>
 
           {/* Desktop Right Section */}
           <div class="hidden md:flex items-center space-x-4">
-            <button
+            <a
               id="lang-toggle"
+              href={`?lang=${lang === 'ms' ? 'en' : 'ms'}`}
               class="text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors border border-gray-300 rounded px-3 py-1"
               aria-label="Toggle language"
             >
-              <span id="lang-label">EN</span>
-            </button>
+              <span id="lang-label">{lang === 'ms' ? 'EN' : 'MS'}</span>
+            </a>
             <a
               href="/contact"
               class="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors"
-              data-i18n="nav.contactBtn"
+              data-i18n="cta.button"
             >
-              Hubungi Kami
+              {t.cta.button}
             </a>
           </div>
 
@@ -146,7 +182,7 @@ const serializedTranslations = JSON.stringify(translations).replaceAll(
             >
               <span
                 class="text-lg font-semibold text-gray-900"
-                data-i18n="language">Bahasa</span
+                data-i18n="language">{t.language}</span
               >
               <button
                 id="mobile-menu-close"
@@ -176,36 +212,37 @@ const serializedTranslations = JSON.stringify(translations).replaceAll(
                 class="block px-4 py-3 rounded-lg text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors text-base font-medium"
                 data-i18n="nav.home"
               >
-                Laman Utama
+                {t.nav.home}
               </a>
               <a
                 href="/about"
                 class="block px-4 py-3 rounded-lg text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors text-base font-medium"
                 data-i18n="nav.about"
               >
-                Tentang Kami
+                {t.nav.about}
               </a>
               <a
                 href="/services"
                 class="block px-4 py-3 rounded-lg text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors text-base font-medium"
                 data-i18n="nav.services"
               >
-                Perkhidmatan
+                {t.nav.services}
               </a>
               <a
                 href="/contact"
                 class="block px-4 py-3 rounded-lg text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors text-base font-medium"
                 data-i18n="nav.contact"
               >
-                Hubungi
+                {t.nav.contact}
               </a>
             </nav>
 
             {/* Drawer Footer - Language Toggle & CTA */}
             <div class="p-4 border-t border-gray-200 space-y-3">
               {/* Mobile Language Toggle */}
-              <button
+              <a
                 id="mobile-lang-toggle"
+                href={`?lang=${lang === 'ms' ? 'en' : 'ms'}`}
                 class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg border border-gray-300 text-gray-700 hover:text-primary-600 hover:border-primary-600 transition-colors"
               >
                 <svg
@@ -222,16 +259,18 @@ const serializedTranslations = JSON.stringify(translations).replaceAll(
                     d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"
                   ></path>
                 </svg>
-                <span id="mobile-lang-label">English</span>
-              </button>
+                <span id="mobile-lang-label"
+                  >{lang === 'ms' ? 'English' : 'Bahasa Melayu'}</span
+                >
+              </a>
 
               {/* Mobile CTA Button */}
               <a
                 href="/contact"
                 class="block w-full text-center px-4 py-3 rounded-lg bg-primary-600 text-white font-medium hover:bg-primary-700 transition-colors"
-                data-i18n="nav.contactBtn"
+                data-i18n="cta.button"
               >
-                Hubungi Kami
+                {t.cta.button}
               </a>
             </div>
           </div>
@@ -249,8 +288,7 @@ const serializedTranslations = JSON.stringify(translations).replaceAll(
           <div>
             <h3 class="text-lg font-semibold mb-4">{siteConfig.name}</h3>
             <p class="text-gray-400" data-i18n="footer.description">
-              Perkhidmatan perundingan tanah profesional membantu pelanggan
-              menavigasi landskap hartanah Malaysia dengan keyakinan.
+              {t.footer.description}
             </p>
           </div>
           <div>
@@ -258,42 +296,42 @@ const serializedTranslations = JSON.stringify(translations).replaceAll(
               class="text-lg font-semibold mb-4"
               data-i18n="footer.quickLinks"
             >
-              Pautan Pantas
+              {t.footer.quickLinks}
             </h3>
             <ul class="space-y-2">
               <li>
                 <a
                   href="/"
                   class="text-gray-400 hover:text-white transition-colors"
-                  data-i18n="nav.home">Laman Utama</a
+                  data-i18n="nav.home">{t.nav.home}</a
                 >
               </li>
               <li>
                 <a
                   href="/about"
                   class="text-gray-400 hover:text-white transition-colors"
-                  data-i18n="nav.about">Tentang Kami</a
+                  data-i18n="nav.about">{t.nav.about}</a
                 >
               </li>
               <li>
                 <a
                   href="/services"
                   class="text-gray-400 hover:text-white transition-colors"
-                  data-i18n="nav.services">Perkhidmatan</a
+                  data-i18n="nav.services">{t.nav.services}</a
                 >
               </li>
               <li>
                 <a
                   href="/contact"
                   class="text-gray-400 hover:text-white transition-colors"
-                  data-i18n="nav.contact">Hubungi</a
+                  data-i18n="nav.contact">{t.nav.contact}</a
                 >
               </li>
             </ul>
           </div>
           <div>
             <h3 class="text-lg font-semibold mb-4" data-i18n="footer.contact">
-              Hubungi
+              {t.footer.contact}
             </h3>
             <p class="text-gray-400">{siteConfig.address}</p>
             <p class="text-gray-400">{siteConfig.phone}</p>
@@ -304,19 +342,22 @@ const serializedTranslations = JSON.stringify(translations).replaceAll(
           class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400"
         >
           <span data-i18n="footer.copyright">
-            © {currentYear} NS Land Consultant. Hak cipta terpelihara.
+            © {currentYear}
+            {siteConfig.name}. {t.footer.copyright}
           </span>
         </div>
       </div>
     </footer>
 
     <script
+      is:inline
       define:vars={{
         translationsData: serializedTranslations,
         year: currentYear,
       }}
     >
       // Translations data - injected from server
+      // @ts-expect-error - translationsData is injected via define:vars
       const translations = JSON.parse(translationsData);
       const currentYear = year;
 
@@ -467,9 +508,22 @@ const serializedTranslations = JSON.stringify(translations).replaceAll(
         }
       });
 
-      // Initialize on page load
-      const currentLang = getStoredLang();
-      updatePageLang(currentLang);
+      // Initialize with server-rendered language (from prop)
+      const initialLang = '{lang}';
+      if (initialLang && (initialLang === 'ms' || initialLang === 'en')) {
+        // Use server-rendered language as initial state
+        document.documentElement.lang = initialLang;
+      }
+
+      // Then check localStorage for user preference (client-side only)
+      const storedLang = getStoredLang();
+      if (storedLang !== initialLang) {
+        // If stored language differs from server language, update the page
+        updatePageLang(storedLang);
+      } else {
+        // Just update the UI labels
+        updatePageLang(storedLang);
+      }
 
       // Desktop language toggle button
       const langToggle = document.getElementById('lang-toggle');

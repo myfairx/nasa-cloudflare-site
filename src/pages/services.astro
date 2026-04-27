@@ -1,8 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { translations } from '../data/content';
+import { translations, defaultLang, type Lang } from '../data/content';
 
-const t = translations.ms;
+// Get language from URL query param or default
+const lang: Lang = (Astro.url.searchParams.get('lang') as Lang) || defaultLang;
+const t = translations[lang];
 
 const getIconSvg = (icon: string) => {
   const icons: Record<string, string> = {
@@ -30,7 +32,12 @@ const getIconSvg = (icon: string) => {
 };
 ---
 
-<Layout title={t.nav.services} titleKey="nav.services">
+<Layout
+  title={t.nav.services}
+  titleKey="nav.services"
+  pageType="services"
+  lang={lang}
+>
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">

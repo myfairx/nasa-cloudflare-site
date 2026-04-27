@@ -30,8 +30,7 @@
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.1.4",
     "miniflare": "^4.20260409.0",
-    "tailwindcss": "^4.2.2",
-    "wrangler": "^4.81.1"
+    "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
@@ -44,6 +43,7 @@
     "lint-staged": "^16.4.0",
     "prettier": "^3.8.1",
     "prettier-plugin-astro": "^0.14.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "wrangler": "^4.85.0"
   }
 }
