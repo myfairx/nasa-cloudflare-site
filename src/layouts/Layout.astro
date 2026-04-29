@@ -1,6 +1,13 @@
 ---
 import '../styles/global.css';
-import { defaultLang, siteConfig, translations, seo } from '../data/content';
+import {
+  defaultLang,
+  siteConfig,
+  translations,
+  seo,
+  promotions,
+} from '../data/content';
+import PromotionModal from '../components/PromotionModal.astro';
 import type { Lang } from '../data/content';
 
 interface Props {
@@ -288,6 +295,8 @@ const serializedTranslations = JSON.stringify(translations).replaceAll(
       <slot />
     </main>
 
+    <PromotionModal promotions={promotions} lang={lang} pageType={pageType} />
+
     <footer class="bg-gray-900 text-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div
@@ -388,16 +397,17 @@ const serializedTranslations = JSON.stringify(translations).replaceAll(
     </footer>
 
     <script
+      id="site-translations"
+      type="application/json"
       is:inline
-      define:vars={{
-        translationsData: serializedTranslations,
-        year: currentYear,
-      }}
-    >
+      set:html={serializedTranslations}
+    />
+
+    <script is:inline>
       // Translations data - injected from server
-      // @ts-expect-error - translationsData is injected via define:vars
-      const translations = JSON.parse(translationsData);
-      const currentYear = year;
+      const translationsElement = document.getElementById('site-translations');
+      const translations = JSON.parse(translationsElement?.textContent ?? '{}');
+      const currentYear = new Date().getFullYear();
 
       const STORAGE_KEY = 'nslc-lang';
 
@@ -484,7 +494,6 @@ const serializedTranslations = JSON.stringify(translations).replaceAll(
           !mobileMenuBackdrop ||
           !mobileMenuPanel
         ) {
-          console.error('Mobile menu elements not found');
           return;
         }
 

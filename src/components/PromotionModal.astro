@@ -1,0 +1,233 @@
+---
+import type { Lang } from '../data/content';
+
+interface PromoImage {
+  src: string;
+  alt: Record<Lang, string>;
+  link?: string;
+  startDate?: string;
+  endDate?: string;
+}
+
+interface PromotionSettings {
+  enabled: boolean;
+  showOn: string[];
+  settings: {
+    delay: number;
+    oncePerDay: boolean;
+    storageKey: string;
+    expiryDays: number;
+  };
+  images: PromoImage[];
+}
+
+interface Props {
+  promotions: PromotionSettings;
+  lang: Lang;
+  pageType?: 'home' | 'about' | 'services' | 'contact';
+}
+
+const { promotions, lang, pageType } = Astro.props as Props;
+const firstImage = promotions.images[0];
+const shouldRender =
+  promotions.enabled &&
+  pageType !== undefined &&
+  promotions.showOn.includes(pageType) &&
+  firstImage;
+
+const promoAlt = firstImage ? (firstImage.alt[lang] ?? firstImage.alt.ms) : '';
+const serializedPromotions = JSON.stringify(promotions).replaceAll(
+  '<',
+  '\\u003c'
+);
+---
+
+{
+  shouldRender && (
+    <div
+      id="promo-modal"
+      class="fixed inset-0 z-[80] hidden items-center justify-center px-4 py-6"
+      aria-hidden="true"
+    >
+      <div
+        id="promo-modal-backdrop"
+        class="absolute inset-0 bg-black/70 opacity-0 transition-opacity duration-300"
+      />
+
+      <div
+        class="promo-modal-panel relative z-10 w-[92vw] max-w-3xl max-h-[88vh] overflow-hidden rounded-2xl bg-white shadow-2xl opacity-0 scale-95 transition duration-300 md:w-[82vw] lg:w-[68vw]"
+        id="promo-modal-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label={promoAlt}
+      >
+        <button
+          id="promo-modal-close"
+          type="button"
+          class="absolute right-3 top-3 z-20 inline-flex items-center gap-2 rounded-full bg-white/95 px-3 py-2 text-sm font-semibold text-gray-700 shadow-lg ring-1 ring-black/10 transition-colors hover:text-primary-700"
+          aria-label="Close promotion"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="h-4 w-4"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+          <span>Close</span>
+        </button>
+
+        {firstImage.link ? (
+          <a href={firstImage.link} class="block">
+            <img
+              src={firstImage.src}
+              alt={promoAlt}
+              class="block max-h-[88vh] w-full object-contain"
+              loading="eager"
+            />
+          </a>
+        ) : (
+          <img
+            src={firstImage.src}
+            alt={promoAlt}
+            class="block max-h-[88vh] w-full object-contain"
+            loading="eager"
+          />
+        )}
+      </div>
+    </div>
+  )
+}
+
+<script
+  id="promo-config"
+  type="application/json"
+  is:inline
+  set:html={serializedPromotions}
+/>
+
+<script is:inline>
+  (() => {
+    const configElement = document.getElementById('promo-config');
+    const config = JSON.parse(configElement?.textContent ?? '{}');
+    const modal = document.getElementById('promo-modal');
+    const backdrop = document.getElementById('promo-modal-backdrop');
+    const panel = document.getElementById('promo-modal-panel');
+    const closeButton = document.getElementById('promo-modal-close');
+
+    if (!modal || !backdrop || !panel || !closeButton) return;
+
+    const storage = config.settings.oncePerDay
+      ? window.localStorage
+      : window.sessionStorage;
+    const storageKey = config.settings.storageKey;
+    const expiryDays = Number(config.settings.expiryDays ?? 1);
+    const delay = Number(config.settings.delay ?? 0);
+    const now = Date.now();
+
+    const image = Array.isArray(config.images) ? config.images[0] : null;
+    if (!image) return;
+
+    const isWithinDateRange = () => {
+      const start = image.startDate ? new Date(image.startDate) : null;
+      const end = image.endDate ? new Date(image.endDate) : null;
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      if (start) {
+        start.setHours(0, 0, 0, 0);
+        if (today < start) return false;
+      }
+
+      if (end) {
+        end.setHours(23, 59, 59, 999);
+        if (today > end) return false;
+      }
+
+      return true;
+    };
+
+    const hasRecentDismissal = () => {
+      try {
+        const stored = storage.getItem(storageKey);
+        if (!stored) return false;
+
+        const parsed = JSON.parse(stored);
+        const dismissedAt = Number(parsed?.dismissedAt ?? 0);
+        if (!dismissedAt) return false;
+
+        const ageMs = now - dismissedAt;
+        const maxAgeMs = expiryDays * 24 * 60 * 60 * 1000;
+        return ageMs < maxAgeMs;
+      } catch {
+        return false;
+      }
+    };
+
+    const markDismissed = () => {
+      try {
+        storage.setItem(
+          storageKey,
+          JSON.stringify({ dismissedAt: Date.now() })
+        );
+      } catch {
+        // Ignore storage failures in private mode or blocked storage.
+      }
+    };
+
+    const openModal = () => {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      modal.setAttribute('aria-hidden', 'false');
+
+      requestAnimationFrame(() => {
+        backdrop.classList.remove('opacity-0');
+        backdrop.classList.add('opacity-100');
+        panel.classList.remove('opacity-0', 'scale-95');
+        panel.classList.add('opacity-100', 'scale-100');
+        panel.classList.add('animate-promo-pop');
+      });
+
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeModal = () => {
+      backdrop.classList.remove('opacity-100');
+      backdrop.classList.add('opacity-0');
+      panel.classList.remove('opacity-100', 'scale-100');
+      panel.classList.add('opacity-0', 'scale-95');
+      panel.classList.remove('animate-promo-pop');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      markDismissed();
+
+      window.setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }, 300);
+    };
+
+    const canShow = isWithinDateRange() && !hasRecentDismissal();
+    if (!canShow) return;
+
+    window.setTimeout(openModal, delay);
+
+    closeButton.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', closeModal);
+    document.addEventListener('keydown', (event) => {
+      if (
+        event.key === 'Escape' &&
+        modal.getAttribute('aria-hidden') === 'false'
+      ) {
+        closeModal();
+      }
+    });
+  })();
+</script>
