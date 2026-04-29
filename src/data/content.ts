@@ -9,6 +9,7 @@ export const defaultLang: Lang = 'ms';
 
 export const siteConfig = {
   name: 'NS Land Consultant Sdn. Bhd.',
+  shortName: 'NS Land Consultant',
   email: 'admin@nslandconsultant.com',
   phone: '+60 17-517 0609',
   address: 'Lot 14079 Jalan Taiping, Kampung Teluk Medan 34300 Bagan Serai',
@@ -338,7 +339,7 @@ export const translations = {
       quickLinks: 'Pautan Pantas',
       social: 'Media Sosial',
       contact: 'Hubungi',
-      copyright: '© {year} NS Land Consultant Sdn. Bhd. Hak cipta terpelihara.',
+      copyright: 'Hak cipta terpelihara.',
     },
 
     // ============================================================================
@@ -349,6 +350,7 @@ export const translations = {
       subtitle:
         'Hubungi kami hari ini untuk perbincangan awal mengenai keperluan tanah atau hartanah anda.',
       button: 'Hubungi Kami',
+      whatsappButton: 'WhatsApp Kami',
     },
     agentSystem: {
       title: 'Sistem Agent NS Land Consultant',
@@ -567,7 +569,7 @@ export const translations = {
       quickLinks: 'Quick Links',
       social: 'Social Media',
       contact: 'Contact',
-      copyright: '© {year} NS Land Consultant Sdn. Bhd. All rights reserved.',
+      copyright: 'All rights reserved.',
     },
 
     // ============================================================================
@@ -578,6 +580,7 @@ export const translations = {
       subtitle:
         'Contact us today for a discussion about your land or property needs.',
       button: 'Contact Us',
+      whatsappButton: 'Chat on WhatsApp',
     },
     agentSystem: {
       title: 'NS Land Consultant Agent System',

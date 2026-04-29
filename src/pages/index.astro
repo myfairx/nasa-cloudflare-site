@@ -1,6 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { translations, defaultLang, type Lang } from '../data/content';
+import {
+  siteConfig,
+  translations,
+  defaultLang,
+  type Lang,
+} from '../data/content';
 
 // Get language from URL query param or default
 const lang: Lang = (Astro.url.searchParams.get('lang') as Lang) || defaultLang;
@@ -22,13 +27,24 @@ const t = translations[lang];
         <p class="text-xl text-gray-600 mb-8" data-i18n="hero.subtitle">
           {t.hero.subtitle}
         </p>
-        <a
-          href="/contact"
-          class="inline-flex items-center bg-primary-600 text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-primary-700 transition-colors"
-          data-i18n="hero.cta"
-        >
-          {t.hero.cta}
-        </a>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center bg-primary-600 text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-primary-700 transition-colors"
+            data-i18n="hero.cta"
+          >
+            {t.hero.cta}
+          </a>
+          <a
+            href={siteConfig.social.whatsapp}
+            target="_blank"
+            rel="noreferrer"
+            class="inline-flex items-center justify-center bg-green-600 text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-green-700 transition-colors"
+            data-i18n="cta.whatsappButton"
+          >
+            {t.cta.whatsappButton}
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -147,13 +163,24 @@ const t = translations[lang];
       >
         {t.cta.subtitle}
       </p>
-      <a
-        href="/contact"
-        class="inline-flex items-center bg-white text-primary-600 px-6 py-3 rounded-lg text-lg font-medium hover:bg-gray-100 transition-colors"
-        data-i18n="cta.button"
-      >
-        {t.cta.button}
-      </a>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center bg-white text-primary-600 px-6 py-3 rounded-lg text-lg font-medium hover:bg-gray-100 transition-colors"
+          data-i18n="cta.button"
+        >
+          {t.cta.button}
+        </a>
+        <a
+          href={siteConfig.social.whatsapp}
+          target="_blank"
+          rel="noreferrer"
+          class="inline-flex items-center justify-center bg-green-600 text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-green-700 transition-colors"
+          data-i18n="cta.whatsappButton"
+        >
+          {t.cta.whatsappButton}
+        </a>
+      </div>
     </div>
   </section>
 </Layout>

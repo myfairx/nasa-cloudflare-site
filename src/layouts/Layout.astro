@@ -77,7 +77,7 @@ const serializedTranslations = JSON.stringify(translations).replaceAll(
       <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
           <a href="/" class="text-xl font-bold text-primary-600">
-            {siteConfig.name}
+            {siteConfig.shortName ?? siteConfig.name}
           </a>
 
           {/* Desktop Navigation */}
@@ -162,127 +162,127 @@ const serializedTranslations = JSON.stringify(translations).replaceAll(
           </button>
         </div>
       </nav>
+    </header>
 
-      {/* Mobile Menu Drawer */}
+    {/* Mobile Menu Drawer */}
+    <div
+      id="mobile-menu-drawer"
+      class="fixed inset-0 z-[60] hidden md:hidden pointer-events-none"
+      aria-hidden="true"
+    >
+      {/* Backdrop */}
       <div
-        id="mobile-menu-drawer"
-        class="fixed inset-0 z-50 md:hidden"
-        aria-hidden="true"
+        id="mobile-menu-backdrop"
+        class="absolute inset-x-0 top-16 bottom-0 bg-black/60 opacity-0 transition-opacity duration-300 ease-out"
       >
-        {/* Backdrop */}
-        <div
-          id="mobile-menu-backdrop"
-          class="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300 ease-out"
-        >
-        </div>
+      </div>
 
-        {/* Drawer Panel */}
-        <div
-          id="mobile-menu-panel"
-          class="absolute right-0 top-0 h-full w-72 max-w-[80vw] bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-out"
-        >
-          <div class="flex flex-col h-full">
-            {/* Drawer Header */}
-            <div
-              class="flex items-center justify-between p-4 border-b border-gray-200"
+      {/* Drawer Panel */}
+      <div
+        id="mobile-menu-panel"
+        class="absolute right-0 top-16 bottom-0 w-72 max-w-[80vw] bg-white shadow-2xl overflow-y-auto overscroll-contain transform translate-x-full transition-transform duration-300 ease-out"
+      >
+        <div class="flex flex-col">
+          {/* Drawer Header */}
+          <div
+            class="flex items-center justify-between p-4 border-b border-gray-200 bg-white"
+          >
+            <span
+              class="text-lg font-semibold text-gray-900"
+              data-i18n="language">{t.language}</span
             >
-              <span
-                class="text-lg font-semibold text-gray-900"
-                data-i18n="language">{t.language}</span
+            <button
+              id="mobile-menu-close"
+              class="p-2 rounded-lg text-gray-700 hover:text-primary-600 hover:bg-gray-100 transition-colors"
+              aria-label="Close menu"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
               >
-              <button
-                id="mobile-menu-close"
-                class="p-2 rounded-lg text-gray-700 hover:text-primary-600 hover:bg-gray-100 transition-colors"
-                aria-label="Close menu"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="w-6 h-6"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-              </button>
-            </div>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
 
-            {/* Drawer Navigation Links */}
-            <nav class="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
-              <a
-                href="/"
-                class="block px-4 py-3 rounded-lg text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors text-base font-medium"
-                data-i18n="nav.home"
-              >
-                {t.nav.home}
-              </a>
-              <a
-                href="/about"
-                class="block px-4 py-3 rounded-lg text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors text-base font-medium"
-                data-i18n="nav.about"
-              >
-                {t.nav.about}
-              </a>
-              <a
-                href="/services"
-                class="block px-4 py-3 rounded-lg text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors text-base font-medium"
-                data-i18n="nav.services"
-              >
-                {t.nav.services}
-              </a>
-              <a
-                href="/contact"
-                class="block px-4 py-3 rounded-lg text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors text-base font-medium"
-                data-i18n="nav.contact"
-              >
-                {t.nav.contact}
-              </a>
-            </nav>
+          {/* Drawer Navigation Links */}
+          <nav class="px-4 py-6 space-y-1">
+            <a
+              href="/"
+              class="block px-4 py-3 rounded-lg text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors text-base font-medium"
+              data-i18n="nav.home"
+            >
+              {t.nav.home}
+            </a>
+            <a
+              href="/about"
+              class="block px-4 py-3 rounded-lg text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors text-base font-medium"
+              data-i18n="nav.about"
+            >
+              {t.nav.about}
+            </a>
+            <a
+              href="/services"
+              class="block px-4 py-3 rounded-lg text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors text-base font-medium"
+              data-i18n="nav.services"
+            >
+              {t.nav.services}
+            </a>
+            <a
+              href="/contact"
+              class="block px-4 py-3 rounded-lg text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors text-base font-medium"
+              data-i18n="nav.contact"
+            >
+              {t.nav.contact}
+            </a>
+          </nav>
 
-            {/* Drawer Footer - Language Toggle & CTA */}
-            <div class="p-4 border-t border-gray-200 space-y-3">
-              {/* Mobile Language Toggle */}
-              <a
-                id="mobile-lang-toggle"
-                href={`?lang=${lang === 'ms' ? 'en' : 'ms'}`}
-                class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg border border-gray-300 text-gray-700 hover:text-primary-600 hover:border-primary-600 transition-colors"
+          {/* Drawer Footer - Language Toggle & CTA */}
+          <div class="px-4 py-4 border-t border-gray-200 space-y-3 bg-white">
+            {/* Mobile Language Toggle */}
+            <a
+              id="mobile-lang-toggle"
+              href={`?lang=${lang === 'ms' ? 'en' : 'ms'}`}
+              class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg border border-gray-300 text-gray-700 hover:text-primary-600 hover:border-primary-600 transition-colors"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-5 h-5"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="w-5 h-5"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"
-                  ></path>
-                </svg>
-                <span id="mobile-lang-label"
-                  >{lang === 'ms' ? 'English' : 'Bahasa Melayu'}</span
-                >
-              </a>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"
+                ></path>
+              </svg>
+              <span id="mobile-lang-label"
+                >{lang === 'ms' ? 'English' : 'Bahasa Melayu'}</span
+              >
+            </a>
 
-              {/* Mobile CTA Button */}
-              <a
-                href="/contact"
-                class="block w-full text-center px-4 py-3 rounded-lg bg-primary-600 text-white font-medium hover:bg-primary-700 transition-colors"
-                data-i18n="cta.button"
-              >
-                {t.cta.button}
-              </a>
-            </div>
+            {/* Mobile CTA Button */}
+            <a
+              href="/contact"
+              class="block w-full text-center px-4 py-3 rounded-lg bg-primary-600 text-white font-medium hover:bg-primary-700 transition-colors"
+              data-i18n="cta.button"
+            >
+              {t.cta.button}
+            </a>
           </div>
         </div>
       </div>
-    </header>
+    </div>
 
     <main class="pt-16">
       <slot />
@@ -493,6 +493,8 @@ const serializedTranslations = JSON.stringify(translations).replaceAll(
         function openMobileMenu() {
           isMenuOpen = true;
 
+          mobileMenuDrawer.classList.remove('hidden', 'pointer-events-none');
+          mobileMenuDrawer.classList.add('pointer-events-auto');
           mobileMenuDrawer.setAttribute('aria-hidden', 'false');
           mobileMenuBtn.setAttribute('aria-expanded', 'true');
 
@@ -532,6 +534,9 @@ const serializedTranslations = JSON.stringify(translations).replaceAll(
 
           // Restore body scroll
           document.body.style.overflow = '';
+
+          mobileMenuDrawer.classList.remove('pointer-events-auto');
+          mobileMenuDrawer.classList.add('pointer-events-none', 'hidden');
         }
 
         // Toggle menu on hamburger button click
