@@ -72,8 +72,8 @@ export default {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: 'NS Land Contact <contact@nslandconsultant.com>',
-          to: ['info@nslandconsultant.com'],
+          from: 'NS Land Contact <admin@nslandconsultant.com>',
+          to: ['admin@nslandconsultant.com'],
           subject: `New Contact Form Submission from ${name}`,
           html: `
             <h3>New Contact Form Submission</h3>

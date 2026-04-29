@@ -68,6 +68,8 @@ To deploy the Worker later:
 npx wrangler deploy --config worker/wrangler.toml
 ```
 
+See [docs/DEPLOYMENT_AND_CONTACT_FORM.md](/C:/Users/wan/Desktop/nasa/docs/DEPLOYMENT_AND_CONTACT_FORM.md) for the full setup and troubleshooting guide.
+
 ## Pending Tasks
 
 - [ ] Add company logo

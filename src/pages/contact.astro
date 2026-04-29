@@ -191,10 +191,7 @@ const t = translations[lang];
             </div>
 
             <!-- Cloudflare Turnstile Widget -->
-            <div
-              class="cf-turnstile"
-              data-sitekey="[NEEDS CLIENT INPUT - Turnstile Site Key]"
-            >
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAADFpiajp7mkrHezP">
             </div>
 
             <div class="grid gap-3 sm:grid-cols-2">
@@ -246,8 +243,7 @@ const t = translations[lang];
       const submitBtn = document.getElementById('submit-btn');
       const successMsg = document.getElementById('form-success');
       const errorMsg = document.getElementById('form-error');
-      const workerUrl =
-        '[NEEDS CLIENT INPUT - Worker URL, e.g., https://nsland-contact-api.your-account.workers.dev]';
+      const workerUrl = 'https://nsland-contact-api.myfairx.workers.dev';
 
       form.addEventListener('submit', async function (e) {
         e.preventDefault();
