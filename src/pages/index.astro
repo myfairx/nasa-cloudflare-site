@@ -14,23 +14,29 @@ const t = translations[lang];
 
 <Layout title={t.nav.home} titleKey="nav.home" pageType="home" lang={lang}>
   <section
-    class="reveal relative bg-gradient-to-br from-primary-50 to-white py-20 lg:py-32"
+    class="reveal relative py-20 lg:py-32 overflow-hidden"
+    style="background-image: url('/images/backgrounds/bg1.webp'); background-size: cover; background-position: center;"
   >
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="max-w-3xl">
         <h1
-          class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6"
+          class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
+          style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7), 0 0 20px rgba(0,0,0,0.5);"
           data-i18n="hero.title"
         >
           {t.hero.title}
         </h1>
-        <p class="text-xl text-gray-600 mb-8" data-i18n="hero.subtitle">
+        <p
+          class="text-xl text-white mb-8"
+          style="text-shadow: 1px 1px 3px rgba(0,0,0,0.7), 0 0 15px rgba(0,0,0,0.4);"
+          data-i18n="hero.subtitle"
+        >
           {t.hero.subtitle}
         </p>
         <div class="flex flex-col sm:flex-row gap-3">
           <a
             href="/contact"
-            class="inline-flex items-center justify-center bg-primary-600 text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-primary-700 transition-colors"
+            class="inline-flex items-center justify-center bg-white text-primary-700 px-6 py-3 rounded-lg text-lg font-medium hover:bg-gray-100 transition-colors shadow-lg"
             data-i18n="hero.cta"
           >
             {t.hero.cta}
@@ -39,7 +45,7 @@ const t = translations[lang];
             href={siteConfig.social.whatsapp}
             target="_blank"
             rel="noreferrer"
-            class="inline-flex items-center justify-center bg-green-600 text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-green-700 transition-colors"
+            class="inline-flex items-center justify-center bg-green-600 text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-green-700 transition-colors shadow-lg"
             data-i18n="cta.whatsappButton"
           >
             {t.cta.whatsappButton}

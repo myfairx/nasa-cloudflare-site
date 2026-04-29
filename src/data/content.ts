@@ -644,8 +644,8 @@ export const promotions = {
     {
       src: '/promos/promo-1.jpg',
       alt: {
-        ms: '[NEEDS CLIENT INPUT] - Contoh: Promosi diskaun 20% perundingan pusaka',
-        en: '[NEEDS CLIENT INPUT] - Example: 20% discount on inheritance consultation',
+        ms: 'NAK BELI TANAH TAPI TAKUT KENA TIPU?',
+        en: 'WANT TO BUY LAND BUT AFRAID OF BEING SCAMMED?',
       },
       // Optional: link when clicking image
       link: '/contact',
