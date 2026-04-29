@@ -7,5 +7,8 @@ export default defineConfig({
   output: 'static',
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      allowedHosts: ['.trycloudflare.com'],
+    },
   },
 });
