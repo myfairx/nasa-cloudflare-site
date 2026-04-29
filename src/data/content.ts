@@ -8,18 +8,16 @@ export const defaultLang: Lang = 'ms';
 // ============================================================================
 
 export const siteConfig = {
-  name: 'NS Land Consultant',
-  // [PLACEHOLDER] Update with real contact details
-  email: 'info@nslandconsultant.com',
-  phone: '+60 12-345 6789',
-  address: '[NEEDS CLIENT INPUT] - Full office address',
+  name: 'NS Land Consultant Sdn. Bhd.',
+  email: 'admin@nslandconsultant.com',
+  phone: '+60 17-517 0609',
+  address: 'Lot 14079 Jalan Taiping, Kampung Teluk Medan 34300 Bagan Serai',
   domain: 'nslandconsultant.com',
-  // [PLACEHOLDER] Update with real social links
   social: {
-    facebook: '[NEEDS CLIENT INPUT]',
-    instagram: '[NEEDS CLIENT INPUT]',
-    linkedin: '[NEEDS CLIENT INPUT]',
-    whatsapp: '[NEEDS CLIENT INPUT]',
+    facebook: '',
+    instagram: '',
+    linkedin: '',
+    whatsapp: 'https://wa.me/60175170609',
   },
 };
 
@@ -32,7 +30,7 @@ export const siteConfig = {
 export const seo = {
   // Global SEO
   global: {
-    siteName: 'NS Land Consultant',
+    siteName: 'NS Land Consultant Sdn. Bhd.',
     siteUrl: 'https://nslandconsultant.com',
     // [PLACEHOLDER] 1200x630px recommended, should show company branding
     defaultOgImage: '/images/og-default.jpg',
@@ -46,7 +44,7 @@ export const seo = {
       title:
         'NS Land Consultant | Perkhidmatan Perundingan Tanah Profesional Malaysia',
       description:
-        '[NEEDS CLIENT INPUT] - 150-160 character description of company services and unique value proposition',
+        'NS Land Consultant menyediakan perkhidmatan perundingan tanah profesional untuk pemilik tanah, pembeli, pelabur dan projek pembangunan tanah.',
       keywords: [
         'perunding tanah',
         'hartanah Malaysia',
@@ -58,7 +56,7 @@ export const seo = {
       title:
         'NS Land Consultant | Professional Land Consultancy Services Malaysia',
       description:
-        '[NEEDS CLIENT INPUT] - 150-160 character description of company services and unique value proposition',
+        'NS Land Consultant provides professional land consultancy services for landowners, buyers, investors, and land development projects.',
       keywords: [
         'land consultant',
         'Malaysia property',
@@ -73,7 +71,7 @@ export const seo = {
     ms: {
       title: 'Tentang Kami | NS Land Consultant',
       description:
-        '[NEEDS CLIENT INPUT] - Company history, mission, and team overview',
+        'Ketahui latar belakang NS Land Consultant, misi syarikat dan pendekatan kami dalam membantu pelanggan mengurus urusan tanah.',
       keywords: [
         'tentang NS Land Consultant',
         'pasukan perunding tanah',
@@ -83,7 +81,7 @@ export const seo = {
     en: {
       title: 'About Us | NS Land Consultant',
       description:
-        '[NEEDS CLIENT INPUT] - Company history, mission, and team overview',
+        'Learn about NS Land Consultant, our mission, and our professional approach in assisting clients with land-related matters.',
       keywords: [
         'about NS Land Consultant',
         'land consultancy team',
@@ -97,7 +95,7 @@ export const seo = {
     ms: {
       title: 'Perkhidmatan Kami | NS Land Consultant',
       description:
-        '[NEEDS CLIENT INPUT] - Overview of land consultancy services offered',
+        'Perkhidmatan kami meliputi perundingan tanah, jual beli, semakan geran, pusaka, tukar syarat, pecah lot dan nasihat pembangunan.',
       keywords: [
         'perkhidmatan perunding tanah',
         'urus tanah',
@@ -107,7 +105,7 @@ export const seo = {
     en: {
       title: 'Our Services | NS Land Consultant',
       description:
-        '[NEEDS CLIENT INPUT] - Overview of land consultancy services offered',
+        'Our services include land consultation, sale and purchase coordination, title checks, inheritance matters, conversion, subdivision, and development advisory.',
       keywords: [
         'land consultancy services',
         'land management',
@@ -121,7 +119,7 @@ export const seo = {
     ms: {
       title: 'Hubungi Kami | NS Land Consultant',
       description:
-        '[NEEDS CLIENT INPUT] - Contact information and office location',
+        'Hubungi NS Land Consultant untuk mendapatkan khidmat nasihat berkaitan tanah, hartanah, dokumentasi dan projek pembangunan tanah.',
       keywords: [
         'hubungi perunding tanah',
         'lokasi pejabat',
@@ -131,7 +129,7 @@ export const seo = {
     en: {
       title: 'Contact Us | NS Land Consultant',
       description:
-        '[NEEDS CLIENT INPUT] - Contact information and office location',
+        'Contact NS Land Consultant for professional advice on land, property, documentation, and land development projects.',
       keywords: [
         'contact land consultant',
         'office location',
@@ -152,8 +150,7 @@ export const translations = {
     // ============================================================================
     // Site Tagline (for meta description fallback)
     // ============================================================================
-    tagline:
-      '[PLACEHOLDER] Perkhidmatan perundingan tanah profesional di Malaysia',
+    tagline: 'Perkhidmatan perundingan tanah profesional di Malaysia',
 
     // ============================================================================
     // Language & Navigation
@@ -171,10 +168,9 @@ export const translations = {
     // [NEEDS CLIENT INPUT] - Review hero messaging
     // ============================================================================
     hero: {
-      // [PLACEHOLDER] Consider company-specific tagline
-      title: 'Rakan Perunding Tanah Yang Dipercayai',
+      title: 'Rakan Perunding Tanah Profesional Anda',
       subtitle:
-        '[PLACEHOLDER] Panduan pakar untuk semua keperluan pembangunan tanah dan hartanah anda di seluruh Malaysia',
+        'Membantu pemilik tanah, pembeli dan pelabur mengurus urusan tanah dengan lebih tersusun, telus dan strategik.',
       cta: 'Hubungi Kami',
     },
 
@@ -185,81 +181,81 @@ export const translations = {
     services: {
       title: 'Perkhidmatan Kami',
       subtitle:
-        '[PLACEHOLDER] Perkhidmatan perundingan tanah komprehensif disesuaikan dengan keperluan anda',
+        'Perkhidmatan perundingan tanah komprehensif yang disusun untuk keperluan anda.',
       viewAll: 'Lihat semua perkhidmatan →',
       helpTitle: 'Perlukan Bantuan Memilih Perkhidmatan?',
       helpSubtitle:
-        '[PLACEHOLDER] Pasukan kami sedia membantu anda dengan sebarang soalan mengenai perkhidmatan kami.',
+        'Pasukan kami sedia membantu anda dengan sebarang soalan mengenai perkhidmatan kami.',
       helpButton: 'Hubungi Kami',
       items: [
         {
           id: 'consultation',
           title: 'Perundingan Hartanah & Tanah',
           description:
-            '[PLACEHOLDER] Nasihat jual beli tanah, analisis potensi dan kegunaan tanah, serta strategi pelaburan tanah.',
+            'Kami menyediakan khidmat nasihat berkaitan potensi tanah, status hakmilik, kegunaan tanah, risiko transaksi dan langkah terbaik sebelum pelanggan membuat keputusan.',
           icon: 'consulting',
         },
         {
           id: 'sales-management',
           title: 'Pengurusan Jual Beli Tanah',
           description:
-            '[PLACEHOLDER] Urusan pemasaran tanah, mencari pembeli dan penjual yang sesuai (matching), serta rundingan harga dan penyelesaian urusan jual beli.',
+            'Kami membantu menyusun proses jual beli tanah termasuk pengurusan listing, pencarian pembeli, susunan booking, dokumentasi awal dan koordinasi dengan pihak berkaitan.',
           icon: 'handshake',
         },
         {
           id: 'inheritance',
           title: 'Pengurusan Tanah Pusaka',
           description:
-            '[PLACEHOLDER] Urusan faraid dan pembahagian harta, pelantikan pentadbir atau wakil, serta penyediaan dokumen pusaka.',
+            'Kami membantu pelanggan memahami dan menyusun urusan tanah pusaka melalui semakan dokumen, penyelarasan waris dan rujukan kepada pihak profesional yang berkaitan.',
           icon: 'family',
         },
         {
           id: 'verification',
-          title: 'Semakan & Due Diligence Tanah',
+          title: 'Semakan Tanah & Due Diligence',
           description:
-            '[PLACEHOLDER] Semakan geran dan hak milik, status sekatan dan caveat, serta kategori dan syarat kegunaan tanah.',
+            'Kami membantu membuat semakan awal berkaitan geran, kategori tanah, syarat nyata, sekatan kepentingan, status pegangan dan risiko sebelum sebarang transaksi diteruskan.',
           icon: 'search',
         },
         {
           id: 'conversion',
           title: 'Tukar Syarat Tanah & Pecah Lot',
           description:
-            '[PLACEHOLDER] Permohonan tukar syarat tanah (pertanian kepada bangunan dan sebagainya), pecah lot dan pecah sempadan, serta penggabungan tanah (amalgamation).',
+            'Kami membantu pelanggan memahami proses tukar syarat tanah, pecah sempadan, pecah lot dan keperluan asas sebelum permohonan dimulakan bersama pihak teknikal berkaitan.',
           icon: 'transform',
         },
         {
           id: 'documentation',
-          title: 'Pengurusan Dokumentasi & Sokongan Legal',
+          title: 'Dokumentasi & Sokongan Perundangan',
           description:
-            '[PLACEHOLDER] Penyediaan dokumen jual beli, surat perjanjian seperti LOA dan MOU, serta penyelarasan urusan bersama peguam.',
+            'Kami membantu menyediakan dan menyusun dokumen sokongan berkaitan urusan tanah serta menyelaras perkara yang memerlukan rujukan kepada peguam atau pihak berautoriti.',
           icon: 'document',
         },
         {
           id: 'marketing',
           title: 'Pemasaran & Listing Tanah',
           description:
-            '[PLACEHOLDER] Iklan profesional melalui Facebook, TikTok, dan portal hartanah, penyediaan poster dan video promosi, serta penjenamaan hartanah.',
+            'Kami membantu memasarkan listing tanah secara tersusun melalui bahan promosi, pangkalan data pembeli, jaringan agent dan saluran pemasaran digital yang sesuai.',
           icon: 'megaphone',
         },
         {
           id: 'development',
-          title: 'Khidmat Nasihat Pembangunan Tanah',
+          title: 'Nasihat Pembangunan Tanah',
           description:
-            '[PLACEHOLDER] Cadangan pembangunan seperti lot banglo, komersial dan lain-lain, kajian potensi projek, serta perancangan awal pembangunan.',
+            'Kami menyediakan nasihat awal berkaitan potensi pembangunan tanah, kesesuaian projek, struktur JV, anggaran nilai dan keperluan pihak teknikal sebelum projek diteruskan.',
           icon: 'building',
         },
         {
           id: 'client-management',
-          title: 'Pengurusan Pelanggan (Owner & Buyer)',
+          title: 'Pengurusan Pelanggan End-to-End',
           description:
-            '[PLACEHOLDER] Perkhidmatan menyeluruh dari awal hingga akhir, susulan bersama pelanggan, serta khidmat selepas jualan.',
+            'Kami membantu pelanggan dari peringkat pertanyaan awal sehingga urusan susulan, termasuk rekod pelanggan, kemas kini status dan penyelarasan antara pihak yang terlibat.',
           icon: 'users',
         },
         {
           id: 'special-consultation',
-          title: 'Khidmat Perundingan Khas',
+          title: 'Konsultasi Kes Tanah Khas',
           description:
-            '[PLACEHOLDER] Tanah bermasalah seperti pusaka, pertikaian, dan sekatan, tanah terbiar atau sukar dijual, serta kes rumit seperti ramai pemilik atau dokumen hilang.',
+            'Kami membantu menilai kes tanah yang kompleks seperti dokumen tidak lengkap, pertikaian keluarga, isu pemilik bersama, tanah bermasalah dan kes yang memerlukan strategi penyelesaian.',
           icon: 'star',
         },
       ],
@@ -272,22 +268,22 @@ export const translations = {
     whyUs: {
       title: 'Mengapa Pilih Kami',
       subtitle:
-        '[PLACEHOLDER] Kepakaran dipercayai untuk keperluan tanah dan hartanah anda',
+        'Pendekatan profesional, fokus kepada penyelesaian dan pengurusan yang tersusun.',
       items: [
         {
-          title: 'Pasukan Berpengalaman',
+          title: 'Pendekatan Profesional',
           description:
-            '[PLACEHOLDER] Tahun kepakaran dalam peraturan tanah dan hartanah Malaysia.',
+            'Kami mengurus setiap urusan tanah secara tersusun melalui semakan maklumat, dokumentasi dan penyelarasan proses yang jelas.',
         },
         {
-          title: 'Rakan Dipercayai',
+          title: 'Fokus Kepada Penyelesaian',
           description:
-            '[PLACEHOLDER] Bina hubungan jangka panjang dengan perkhidmatan telus dan boleh dipercayai.',
+            'Kami bukan sekadar memasarkan tanah, tetapi membantu pelanggan memahami masalah, risiko dan strategi terbaik untuk setiap kes.',
         },
         {
-          title: 'Fokus Pelanggan',
+          title: 'Pengurusan End-to-End',
           description:
-            '[PLACEHOLDER] Penyelesian disesuaikan untuk memenuhi keperluan unik anda.',
+            'Kami membantu dari peringkat awal sehingga tindakan susulan, termasuk koordinasi dengan owner, buyer, agent, peguam dan pihak berkaitan.',
         },
       ],
     },
@@ -297,14 +293,16 @@ export const translations = {
     // [NEEDS CLIENT INPUT] - Replace with actual company story
     // ============================================================================
     about: {
-      title: 'Tentang NS Land Consultant',
+      title: 'Tentang NS Land Consultant Sdn. Bhd.',
       story:
-        '[NEEDS CLIENT INPUT] Ditubuhkan dengan misi untuk menyederhanakan perundingan tanah di Malaysia, NS Land Consultant telah berkembang menjadi rakan kongsi dipercayai untuk pemaju hartanah, pelabur, dan pemilik tanah. Pasukan kami menggabungkan pengetahuan tempatan yang mendalam dengan kepakaran profesional untuk memberikan hasil yang bermakna.',
+        'NS Land Consultant Sdn. Bhd. ditubuhkan sebagai sebuah syarikat perundingan tanah profesional yang membantu pemilik tanah, pembeli, pelabur dan pihak berkepentingan menguruskan hal ehwal tanah dengan lebih tersusun, telus dan strategik. Kami memberi fokus kepada perkhidmatan berkaitan pengurusan tanah, semakan maklumat hartanah, urusan jual beli, dokumentasi, pusaka, tukar syarat, pecah lot, perancangan pembangunan serta nasihat struktur projek tanah. Dengan pendekatan yang sistematik dan berorientasikan penyelesaian, kami membantu pelanggan memahami proses tanah yang kompleks melalui panduan yang jelas dan praktikal. Matlamat kami adalah untuk menjadi rakan perunding tanah yang dipercayai dalam membantu pelanggan membuat keputusan yang lebih tepat, selamat dan bernilai dalam setiap urusan tanah.',
       valuesTitle: 'Nilai Kami',
       values: [
-        '[PLACEHOLDER] Integriti dalam setiap urusan',
-        '[PLACEHOLDER] Kecemerlangan dalam penyampaian perkhidmatan',
-        '[PLACEHOLDER] Hubungan pelanggan jangka panjang',
+        'Integriti dalam setiap urusan tanah',
+        'Ketelusan dalam komunikasi dan proses',
+        'Penyelesaian strategik untuk kepentingan pelanggan',
+        'Profesionalisme dalam dokumentasi dan pengurusan',
+        'Membina kepercayaan jangka panjang',
       ],
     },
 
@@ -314,8 +312,9 @@ export const translations = {
     contact: {
       title: 'Hubungi Kami',
       subtitle:
-        '[PLACEHOLDER] Sedia untuk membincangkan keperluan tanah atau hartanah anda? Hubungi kami hari ini.',
+        'Sedia untuk membincangkan urusan tanah anda? Hubungi NS Land Consultant hari ini untuk mendapatkan panduan awal berkaitan tanah, hartanah dan dokumentasi.',
       getInTouch: 'Hubungi Kami',
+      whatsappButton: 'WhatsApp Kami',
       address: 'Alamat',
       email: 'Emel',
       phone: 'Telefon',
@@ -335,10 +334,11 @@ export const translations = {
     // ============================================================================
     footer: {
       description:
-        '[PLACEHOLDER] Perkhidmatan perundingan tanah profesional membantu pelanggan menavigasi landskap hartanah Malaysia dengan keyakinan.',
+        'NS Land Consultant Sdn. Bhd. menyediakan perkhidmatan perundingan tanah profesional untuk membantu pelanggan mengurus urusan tanah dengan lebih yakin dan tersusun.',
       quickLinks: 'Pautan Pantas',
+      social: 'Media Sosial',
       contact: 'Hubungi',
-      copyright: '© {year} NS Land Consultant. Hak cipta terpelihara.',
+      copyright: '© {year} NS Land Consultant Sdn. Bhd. Hak cipta terpelihara.',
     },
 
     // ============================================================================
@@ -347,8 +347,34 @@ export const translations = {
     cta: {
       title: 'Sedia Untuk Memulakan?',
       subtitle:
-        '[PLACEHOLDER] Hubungi kami hari ini untuk perundingan percuma mengenai keperluan tanah atau hartanah anda.',
+        'Hubungi kami hari ini untuk perbincangan awal mengenai keperluan tanah atau hartanah anda.',
       button: 'Hubungi Kami',
+    },
+    agentSystem: {
+      title: 'Sistem Agent NS Land Consultant',
+      subtitle:
+        'Untuk memastikan pengurusan listing dan booking berjalan secara lebih tersusun, NS Land Consultant menyediakan sistem borang khas untuk kegunaan agent.',
+      items: [
+        {
+          title: 'Borang Listing Tanah',
+          description:
+            'Digunakan oleh agent untuk menghantar maklumat tanah yang diperoleh daripada pemilik tanah.',
+        },
+        {
+          title: 'Borang Booking Buyer',
+          description:
+            'Digunakan oleh agent apabila pembeli telah bersetuju untuk membuat booking bagi sesuatu listing tanah.',
+        },
+      ],
+      notes:
+        'Semua maklumat yang dihantar melalui borang ini akan direkod dan disemak oleh pihak admin untuk tujuan follow up, pengesahan dan pengurusan transaksi.',
+      buttons: [
+        'Hantar Listing Tanah',
+        'Hantar Booking Buyer',
+        'Daftar Sebagai Agent',
+        'Semak Status Listing',
+        'Hubungi Admin',
+      ],
     },
   },
 
@@ -356,7 +382,7 @@ export const translations = {
     // ============================================================================
     // Site Tagline (for meta description fallback)
     // ============================================================================
-    tagline: '[PLACEHOLDER] Professional land consultancy services in Malaysia',
+    tagline: 'Professional land consultancy services in Malaysia',
 
     // ============================================================================
     // Language & Navigation
@@ -373,10 +399,10 @@ export const translations = {
     // Hero Section
     // ============================================================================
     hero: {
-      title: 'Your Trusted Land Consultancy Partner',
+      title: 'Your Professional Land Consultancy Partner',
       subtitle:
-        '[PLACEHOLDER] Expert guidance for all your land development and property needs across Malaysia',
-      cta: 'Get in Touch',
+        'Helping landowners, buyers, and investors manage land matters in a structured, transparent, and strategic way.',
+      cta: 'Contact Us',
     },
 
     // ============================================================================
@@ -385,81 +411,81 @@ export const translations = {
     services: {
       title: 'Our Services',
       subtitle:
-        '[PLACEHOLDER] Comprehensive land consultancy services tailored to your needs',
+        'Comprehensive land consultancy services tailored to your needs.',
       viewAll: 'View all services →',
       helpTitle: 'Need Help Choosing a Service?',
       helpSubtitle:
-        '[PLACEHOLDER] Our team is ready to assist you with any questions about our services.',
+        'Our team is ready to assist you with any questions about our services.',
       helpButton: 'Contact Us',
       items: [
         {
           id: 'consultation',
           title: 'Property & Land Consultation',
           description:
-            '[PLACEHOLDER] Advice on land sale and purchase, analysis of land potential and land use, and land investment strategies.',
+            'We provide advisory services on land potential, title status, land use, transaction risks, and the best course of action before clients make decisions.',
           icon: 'consulting',
         },
         {
           id: 'sales-management',
           title: 'Land Sale and Purchase Management',
           description:
-            '[PLACEHOLDER] Land marketing management, finding suitable buyers and sellers (matching), and price negotiation and deal closing.',
+            'We assist in structuring land sale and purchase processes, including listing management, buyer sourcing, booking coordination, preliminary documentation, and stakeholder coordination.',
           icon: 'handshake',
         },
         {
           id: 'inheritance',
           title: 'Inheritance Land Management',
           description:
-            '[PLACEHOLDER] Faraid matters and asset distribution, appointment of administrator or representative, and preparation of inheritance documents.',
+            'We assist clients in understanding and organizing inheritance land matters through document review, heir coordination, and referrals to relevant professionals.',
           icon: 'family',
         },
         {
           id: 'verification',
           title: 'Land Verification & Due Diligence',
           description:
-            '[PLACEHOLDER] Title deed and ownership verification, restriction and caveat status checking, and land use category and conditions.',
+            'We assist with preliminary checks on titles, land category, express conditions, restrictions in interest, tenure status, and risks before any transaction proceeds.',
           icon: 'search',
         },
         {
           id: 'conversion',
           title: 'Land Conversion & Subdivision',
           description:
-            '[PLACEHOLDER] Application for land use conversion (agriculture to building and others), land subdivision and boundary separation, and land amalgamation.',
+            'We help clients understand the process of land conversion, boundary subdivision, lot subdivision, and basic requirements before applications are initiated with relevant technical parties.',
           icon: 'transform',
         },
         {
           id: 'documentation',
           title: 'Documentation Management & Legal Support',
           description:
-            '[PLACEHOLDER] Preparation of sale and purchase documents, agreement letters such as LOA and MOU, and coordination and liaison with lawyers.',
+            'We assist in preparing and organizing supporting documents for land matters and coordinate issues that require referral to lawyers or relevant authorities.',
           icon: 'document',
         },
         {
           id: 'marketing',
           title: 'Land Marketing & Listing',
           description:
-            '[PLACEHOLDER] Professional advertising through Facebook, TikTok, and property portals, preparation of promotional posters and videos, and property branding.',
+            'We assist in marketing land listings through promotional materials, buyer databases, agent networks, and suitable digital marketing channels.',
           icon: 'megaphone',
         },
         {
           id: 'development',
           title: 'Land Development Advisory Services',
           description:
-            '[PLACEHOLDER] Development proposals such as bungalow lots, commercial projects, and others, project potential studies, and early-stage development planning.',
+            'We provide preliminary advisory on land development potential, project suitability, JV structures, estimated value, and technical requirements before projects proceed.',
           icon: 'building',
         },
         {
           id: 'client-management',
-          title: 'Client Management (Owner & Buyer)',
+          title: 'End-to-End Client Management',
           description:
-            '[PLACEHOLDER] End-to-end service management, client follow-up, and after-sales support.',
+            'We assist clients from initial inquiry to follow-up stages, including client records, status updates, and coordination between involved parties.',
           icon: 'users',
         },
         {
           id: 'special-consultation',
-          title: 'Special Consultation Services',
+          title: 'Special Land Case Consultation',
           description:
-            '[PLACEHOLDER] Problematic land cases such as inheritance issues, disputes, and ownership restrictions, abandoned land or difficult-to-sell properties, and complex cases such as multiple owners or missing documents.',
+            'We assist in assessing complex land cases such as incomplete documents, family disputes, co-owner issues, problematic land, and cases requiring a structured resolution strategy.',
           icon: 'star',
         },
       ],
@@ -471,22 +497,22 @@ export const translations = {
     whyUs: {
       title: 'Why Choose Us',
       subtitle:
-        '[PLACEHOLDER] Trusted expertise for your land and property needs',
+        'Professional approach, solution-focused support, and structured management.',
       items: [
         {
-          title: 'Experienced Team',
+          title: 'Professional Approach',
           description:
-            '[PLACEHOLDER] Years of expertise in Malaysian land and property regulations.',
+            'We manage every land matter in a structured way through information review, documentation, and clear process coordination.',
         },
         {
-          title: 'Trusted Partner',
+          title: 'Solution-Focused',
           description:
-            '[PLACEHOLDER] Build long-term relationships with transparent, reliable service.',
+            'We do not only market land; we help clients understand the issues, risks, and best strategies for each case.',
         },
         {
-          title: 'Client-Focused',
+          title: 'End-to-End Management',
           description:
-            '[PLACEHOLDER] Tailored solutions to meet your unique requirements.',
+            'We assist from the initial stage to follow-up actions, including coordination with owners, buyers, agents, lawyers, and relevant parties.',
         },
       ],
     },
@@ -495,14 +521,16 @@ export const translations = {
     // About Page
     // ============================================================================
     about: {
-      title: 'About NS Land Consultant',
+      title: 'About NS Land Consultant Sdn. Bhd.',
       story:
-        '[NEEDS CLIENT INPUT] Founded with a mission to simplify land consultancy in Malaysia, NS Land Consultant has grown to become a trusted partner for property developers, investors, and landowners. Our team combines deep local knowledge with professional expertise to deliver results that matter.',
+        'NS Land Consultant Sdn. Bhd. was established as a professional land consultancy company that assists landowners, buyers, investors, and stakeholders in managing land-related matters in a more structured, transparent, and strategic manner. We focus on land management services, property information verification, sale and purchase coordination, documentation, inheritance land matters, land conversion, subdivision, development planning, and land project advisory. Through a systematic and solution-oriented approach, we help clients understand complex land processes with clear and practical guidance. Our mission is to become a trusted land consultancy partner that helps clients make better, safer, and more valuable decisions in every land-related transaction.',
       valuesTitle: 'Our Values',
       values: [
-        '[PLACEHOLDER] Integrity in every transaction',
-        '[PLACEHOLDER] Excellence in service delivery',
-        '[PLACEHOLDER] Long-term client relationships',
+        'Integrity in every land transaction',
+        'Transparency in communication and process',
+        'Strategic solutions for client interests',
+        'Professionalism in documentation and management',
+        'Building long-term trust',
       ],
     },
 
@@ -512,8 +540,9 @@ export const translations = {
     contact: {
       title: 'Get in Touch',
       subtitle:
-        '[PLACEHOLDER] Ready to discuss your land or property needs? Contact us today.',
+        'Ready to discuss your land matter? Contact NS Land Consultant today for preliminary guidance on land, property, and documentation matters.',
       getInTouch: 'Get in Touch',
+      whatsappButton: 'Chat on WhatsApp',
       address: 'Address',
       email: 'Email',
       phone: 'Phone',
@@ -534,10 +563,11 @@ export const translations = {
     // ============================================================================
     footer: {
       description:
-        "[PLACEHOLDER] Professional land consultancy services helping clients navigate Malaysia's property landscape with confidence.",
+        'NS Land Consultant Sdn. Bhd. provides professional land consultancy services to help clients manage land matters with greater confidence and structure.',
       quickLinks: 'Quick Links',
+      social: 'Social Media',
       contact: 'Contact',
-      copyright: '© {year} NS Land Consultant. All rights reserved.',
+      copyright: '© {year} NS Land Consultant Sdn. Bhd. All rights reserved.',
     },
 
     // ============================================================================
@@ -546,8 +576,34 @@ export const translations = {
     cta: {
       title: 'Ready to Get Started?',
       subtitle:
-        '[PLACEHOLDER] Contact us today for a free consultation on your land or property needs.',
-      button: 'Get in Touch',
+        'Contact us today for a discussion about your land or property needs.',
+      button: 'Contact Us',
+    },
+    agentSystem: {
+      title: 'NS Land Consultant Agent System',
+      subtitle:
+        'To ensure a more structured management of listings and bookings, NS Land Consultant provides dedicated forms for agent use.',
+      items: [
+        {
+          title: 'Land Listing Form',
+          description:
+            'Used by agents to submit land information obtained from landowners.',
+        },
+        {
+          title: 'Buyer Booking Form',
+          description:
+            'Used by agents when a buyer has agreed to place a booking for a land listing.',
+        },
+      ],
+      notes:
+        'All information submitted through these forms will be recorded and reviewed by the admin team for follow-up, verification, and transaction management.',
+      buttons: [
+        'Submit Land Listing',
+        'Submit Buyer Booking',
+        'Register as Agent',
+        'Check Listing Status',
+        'Contact Admin',
+      ],
     },
   },
 };
@@ -611,108 +667,4 @@ export const promotions = {
     showDots: true, // Show dot indicators
     pauseOnHover: true, // Pause when user hovers (desktop)
   },
-};
-
-// ============================================================================
-// LEGACY EXPORTS
-// DEPRECATED: These are for backward compatibility only.
-// Will be removed once all components are updated to use translations object.
-// ============================================================================
-
-export const navigation = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: 'Services', href: '/services' },
-  { label: 'Contact', href: '/contact' },
-];
-
-export const hero = {
-  title: 'Your Trusted Land Consultancy Partner',
-  subtitle:
-    'Expert guidance for all your land development and property needs across Malaysia',
-  cta: 'Get in Touch',
-  ctaHref: '/contact',
-};
-
-export const services = [
-  {
-    id: 'land-development',
-    title: 'Land Development Consulting',
-    description:
-      'Comprehensive advice on land conversion, zoning, and development planning for residential and commercial projects.',
-    icon: 'building',
-  },
-  {
-    id: 'property-advisory',
-    title: 'Property Advisory',
-    description:
-      'Strategic advice on property investment, valuation, and portfolio management for individuals and corporations.',
-    icon: 'chart',
-  },
-  {
-    id: 'title-management',
-    title: 'Title Management',
-    description:
-      'Assistance with land title applications, transfers, and regularization processes with government authorities.',
-    icon: 'document',
-  },
-  {
-    id: 'legal-compliance',
-    title: 'Legal & Compliance',
-    description:
-      'Guidance on land-related legal requirements, permits, and regulatory compliance for seamless project execution.',
-    icon: 'shield',
-  },
-];
-
-export const whyUs = [
-  {
-    title: 'Experienced Team',
-    description:
-      'Years of expertise in Malaysian land and property regulations.',
-  },
-  {
-    title: 'Trusted Partner',
-    description:
-      'Build long-term relationships with transparent, reliable service.',
-  },
-  {
-    title: 'Client-Focused',
-    description: 'Tailored solutions to meet your unique requirements.',
-  },
-];
-
-export const about = {
-  title: 'About NS Land Consultant',
-  story:
-    'Founded with a mission to simplify land consultancy in Malaysia, NS Land Consultant has grown to become a trusted partner for property developers, investors, and landowners. Our team combines deep local knowledge with professional expertise to deliver results that matter.',
-  values: [
-    'Integrity in every transaction',
-    'Excellence in service delivery',
-    'Long-term client relationships',
-  ],
-};
-
-export const contact = {
-  title: 'Get in Touch',
-  subtitle: 'Ready to discuss your land or property needs? Contact us today.',
-  form: {
-    name: 'Name',
-    email: 'Email',
-    phone: 'Phone',
-    message: 'Message',
-    submit: 'Send Message',
-  },
-};
-
-export const footer = {
-  description:
-    "Professional land consultancy services helping clients navigate Malaysia's property landscape with confidence.",
-  quickLinks: [
-    { label: 'Home', href: '/' },
-    { label: 'About', href: '/about' },
-    { label: 'Services', href: '/services' },
-    { label: 'Contact', href: '/contact' },
-  ],
-  copyright: `© ${new Date().getFullYear()} NS Land Consultant. All rights reserved.`,
 };

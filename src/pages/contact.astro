@@ -197,14 +197,25 @@ const t = translations[lang];
             >
             </div>
 
-            <button
-              type="submit"
-              id="submit-btn"
-              class="w-full bg-primary-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              data-i18n="contact.form.submit"
-            >
-              {t.contact.form.submit}
-            </button>
+            <div class="grid gap-3 sm:grid-cols-2">
+              <button
+                type="submit"
+                id="submit-btn"
+                class="w-full bg-primary-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                data-i18n="contact.form.submit"
+              >
+                {t.contact.form.submit}
+              </button>
+              <a
+                href={siteConfig.social.whatsapp}
+                target="_blank"
+                rel="noreferrer"
+                class="w-full inline-flex items-center justify-center px-6 py-3 rounded-lg border border-green-600 text-green-700 font-medium hover:bg-green-50 transition-colors"
+                data-i18n="contact.whatsappButton"
+              >
+                {t.contact.whatsappButton}
+              </a>
+            </div>
 
             <!-- Success Message -->
             <div

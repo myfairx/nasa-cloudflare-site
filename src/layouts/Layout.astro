@@ -30,6 +30,12 @@ const pageDescription =
 const pageTitle = title ?? currentSeo?.title ?? siteConfig.name;
 const canonical = canonicalUrl ?? `${seo.global.siteUrl}${Astro.url.pathname}`;
 const ogImageUrl = ogImage ?? seo.global.defaultOgImage;
+const socialLinks = [
+  { label: 'Facebook', href: siteConfig.social.facebook },
+  { label: 'Instagram', href: siteConfig.social.instagram },
+  { label: 'LinkedIn', href: siteConfig.social.linkedin },
+  { label: 'WhatsApp', href: siteConfig.social.whatsapp },
+].filter((item) => item.href);
 const serializedTranslations = JSON.stringify(translations).replaceAll(
   '<',
   '\\u003c'
@@ -284,7 +290,12 @@ const serializedTranslations = JSON.stringify(translations).replaceAll(
 
     <footer class="bg-gray-900 text-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div
+          class:list={[
+            'grid grid-cols-1 gap-8',
+            socialLinks.length > 0 ? 'md:grid-cols-4' : 'md:grid-cols-3',
+          ]}
+        >
           <div>
             <h3 class="text-lg font-semibold mb-4">{siteConfig.name}</h3>
             <p class="text-gray-400" data-i18n="footer.description">
@@ -329,6 +340,33 @@ const serializedTranslations = JSON.stringify(translations).replaceAll(
               </li>
             </ul>
           </div>
+          {
+            socialLinks.length > 0 && (
+              <div>
+                <h3
+                  class="text-lg font-semibold mb-4"
+                  data-i18n="footer.social"
+                >
+                  {t.footer.social}
+                </h3>
+                <ul class="space-y-2">
+                  {socialLinks.map((social) => (
+                    <li>
+                      <a
+                        href={social.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        class="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+                        aria-label={social.label}
+                      >
+                        {social.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          }
           <div>
             <h3 class="text-lg font-semibold mb-4" data-i18n="footer.contact">
               {t.footer.contact}
