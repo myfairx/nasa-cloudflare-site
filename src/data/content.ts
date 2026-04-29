@@ -158,9 +158,9 @@ export const translations = {
     // ============================================================================
     language: 'Bahasa',
     nav: {
-      home: 'Laman Utama',
+      home: 'Utama',
       about: 'Tentang Kami',
-      services: 'Perkhidmatan',
+      services: 'Khidmat',
       contact: 'Hubungi',
     },
 
@@ -295,8 +295,10 @@ export const translations = {
     // ============================================================================
     about: {
       title: 'Tentang NS Land Consultant Sdn. Bhd.',
-      story:
-        'NS Land Consultant Sdn. Bhd. ditubuhkan sebagai sebuah syarikat perundingan tanah profesional yang membantu pemilik tanah, pembeli, pelabur dan pihak berkepentingan menguruskan hal ehwal tanah dengan lebih tersusun, telus dan strategik. Kami memberi fokus kepada perkhidmatan berkaitan pengurusan tanah, semakan maklumat hartanah, urusan jual beli, dokumentasi, pusaka, tukar syarat, pecah lot, perancangan pembangunan serta nasihat struktur projek tanah. Dengan pendekatan yang sistematik dan berorientasikan penyelesaian, kami membantu pelanggan memahami proses tanah yang kompleks melalui panduan yang jelas dan praktikal. Matlamat kami adalah untuk menjadi rakan perunding tanah yang dipercayai dalam membantu pelanggan membuat keputusan yang lebih tepat, selamat dan bernilai dalam setiap urusan tanah.',
+      story: [
+        'NS Land Consultant Sdn. Bhd. ditubuhkan sebagai sebuah syarikat perundingan tanah profesional yang membantu pemilik tanah, pembeli, pelabur dan pihak berkepentingan menguruskan hal ehwal tanah dengan lebih tersusun, telus dan strategik. Kami memberi fokus kepada perkhidmatan berkaitan pengurusan tanah, semakan maklumat hartanah, urusan jual beli, dokumentasi, pusaka, tukar syarat, pecah lot, perancangan pembangunan serta nasihat struktur projek tanah.',
+        'Dengan pendekatan yang sistematik dan berorientasikan penyelesaian, kami membantu pelanggan memahami proses tanah yang kompleks melalui panduan yang jelas dan praktikal. Matlamat kami adalah untuk menjadi rakan perunding tanah yang dipercayai dalam membantu pelanggan membuat keputusan yang lebih tepat, selamat dan bernilai dalam setiap urusan tanah.',
+      ],
       valuesTitle: 'Nilai Kami',
       values: [
         'Integriti dalam setiap urusan tanah',
@@ -524,8 +526,10 @@ export const translations = {
     // ============================================================================
     about: {
       title: 'About NS Land Consultant Sdn. Bhd.',
-      story:
-        'NS Land Consultant Sdn. Bhd. was established as a professional land consultancy company that assists landowners, buyers, investors, and stakeholders in managing land-related matters in a more structured, transparent, and strategic manner. We focus on land management services, property information verification, sale and purchase coordination, documentation, inheritance land matters, land conversion, subdivision, development planning, and land project advisory. Through a systematic and solution-oriented approach, we help clients understand complex land processes with clear and practical guidance. Our mission is to become a trusted land consultancy partner that helps clients make better, safer, and more valuable decisions in every land-related transaction.',
+      story: [
+        'NS Land Consultant Sdn. Bhd. was established as a professional land consultancy company that assists landowners, buyers, investors, and stakeholders in managing land-related matters in a more structured, transparent, and strategic manner. We focus on land management services, property information verification, sale and purchase coordination, documentation, inheritance land matters, land conversion, subdivision, development planning, and land project advisory.',
+        'Through a systematic and solution-oriented approach, we help clients understand complex land processes with clear and practical guidance. Our mission is to become a trusted land consultancy partner that helps clients make better, safer, and more valuable decisions in every land-related transaction.',
+      ],
       valuesTitle: 'Our Values',
       values: [
         'Integrity in every land transaction',
