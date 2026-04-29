@@ -1,5 +1,5 @@
 name = "nsland-contact-api"
-main = "worker/contact.ts"
+main = "contact.ts"
 compatibility_date = "2026-04-08"
 
 [observability]

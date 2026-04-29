@@ -74,7 +74,8 @@
 ## Phase E: Fix the Contact Form Flow ✅ COMPLETED (Backend Ready)
 
 - [x] Created Cloudflare Worker at `worker/contact.ts`
-- [x] Added `wrangler.toml` configuration
+- [x] Added `worker/wrangler.toml` configuration
+- [x] Added root `wrangler.jsonc` Pages configuration
 - [x] Installed `wrangler` as dev dependency
 - [x] Form submission handler with validation
 - [x] Success/error states in UI with messages
@@ -90,7 +91,7 @@
 - [ ] Sign up for Resend and verify domain (`nslandconsultant.com`)
 - [ ] Generate Resend API key
 - [ ] Store Resend API Key: `npx wrangler secret put RESEND_API_KEY`
-- [ ] Deploy Worker: `npx wrangler deploy`
+- [ ] Deploy Worker: `npx wrangler deploy --config worker/wrangler.toml`
 - [ ] Update Worker URL in `contact.astro` (line 224)
 - [ ] Update Turnstile Site Key in `contact.astro` (line 184)
 

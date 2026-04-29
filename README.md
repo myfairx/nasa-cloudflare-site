@@ -31,6 +31,7 @@ src/
 └── styles/global.css # Tailwind config + custom styles
 public/               # Static assets
 doc/                  # Design mockups (mock1-classic.html, etc.)
+worker/               # Contact form Worker code and Worker wrangler config
 ```
 
 ## Architecture
@@ -58,6 +59,14 @@ Deploy `dist/` to Cloudflare Pages via:
 - Drag & drop in dashboard
 - GitHub integration
 - `npx wrangler pages deploy dist`
+
+Pages config lives in `wrangler.jsonc`. The contact API Worker uses `worker/wrangler.toml`, so the two deploy targets stay separate.
+
+To deploy the Worker later:
+
+```bash
+npx wrangler deploy --config worker/wrangler.toml
+```
 
 ## Pending Tasks
 
