@@ -1,8 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
 import {
   siteConfig,
   translations,
+  pageHeroes,
   defaultLang,
   type Lang,
 } from '../data/content';
@@ -10,6 +12,7 @@ import {
 // Get language from URL query param or default
 const lang: Lang = (Astro.url.searchParams.get('lang') as Lang) || defaultLang;
 const t = translations[lang];
+const hero = pageHeroes.contact[lang];
 ---
 
 <Layout
@@ -18,22 +21,14 @@ const t = translations[lang];
   pageType="contact"
   lang={lang}
 >
+  <PageHero
+    title={hero.title}
+    subtitle={hero.subtitle}
+    backgroundImage={pageHeroes.contact.backgroundImage}
+  />
+
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h1
-          class="reveal text-4xl md:text-5xl font-bold text-gray-900 mb-4"
-          data-i18n="contact.title"
-        >
-          {t.contact.title}
-        </h1>
-        <p
-          class="reveal text-lg text-gray-600 max-w-2xl mx-auto"
-          data-i18n="contact.subtitle"
-        >
-          {t.contact.subtitle}
-        </p>
-      </div>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <div class="reveal">
           <div class="bg-gray-50 rounded-xl p-8">

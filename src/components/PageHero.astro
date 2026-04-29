@@ -1,0 +1,41 @@
+---
+/**
+ * PageHero - Reusable hero component for page headers
+ * Usage: <PageHero title={t.pageHeroes.about[lang].title} subtitle={t.pageHeroes.about[lang].subtitle} backgroundImage={t.pageHeroes.about.backgroundImage} />
+ */
+interface Props {
+  title: string;
+  subtitle: string;
+  backgroundImage: string;
+  extraPadding?: boolean; // For pages that need more vertical space (like home page)
+}
+
+const { title, subtitle, backgroundImage, extraPadding = false } = Astro.props;
+
+const paddingClass = extraPadding ? 'py-20 lg:py-32' : 'py-16 lg:py-24';
+---
+
+<section
+  class={`reveal relative ${paddingClass} overflow-hidden`}
+  style={`background-image: url('${backgroundImage}'); background-size: cover; background-position: center;`}
+>
+  <!-- Dark overlay for text readability -->
+  <div class="absolute inset-0 bg-black/40"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-3xl">
+      <h1
+        class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
+        style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7), 0 0 20px rgba(0,0,0,0.5);"
+      >
+        {title}
+      </h1>
+      <p
+        class="text-xl text-white/90"
+        style="text-shadow: 1px 1px 3px rgba(0,0,0,0.7), 0 0 15px rgba(0,0,0,0.4);"
+      >
+        {subtitle}
+      </p>
+    </div>
+  </div>
+</section>

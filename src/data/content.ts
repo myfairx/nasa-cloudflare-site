@@ -141,6 +141,58 @@ export const seo = {
 };
 
 // ============================================================================
+// PAGE HEROES
+// Hero section content for each page with background images
+// Images should be placed in /public/images/backgrounds/
+// ============================================================================
+
+export const pageHeroes = {
+  home: {
+    backgroundImage: '/images/backgrounds/hero-home.webp',
+    // Content comes from translations.hero
+  },
+  about: {
+    ms: {
+      title: 'Tentang Kami',
+      subtitle:
+        'Kenali NS Land Consultant — rakan perunding tanah yang telus, profesional dan berkomitmen.',
+    },
+    en: {
+      title: 'About Us',
+      subtitle:
+        'Learn about NS Land Consultant — your transparent, professional, and committed land consultancy partner.',
+    },
+    backgroundImage: '/images/backgrounds/hero-about.webp',
+  },
+  services: {
+    ms: {
+      title: 'Perkhidmatan Kami',
+      subtitle:
+        'Perkhidmatan perundingan tanah komprehensif yang disusun untuk keperluan anda.',
+    },
+    en: {
+      title: 'Our Services',
+      subtitle:
+        'Comprehensive land consultancy services tailored to your needs.',
+    },
+    backgroundImage: '/images/backgrounds/hero-services.webp',
+  },
+  contact: {
+    ms: {
+      title: 'Hubungi Kami',
+      subtitle:
+        'Sedia untuk membincangkan urusan tanah anda? Hubungi NS Land Consultant hari ini untuk mendapatkan panduan awal berkaitan tanah, hartanah dan dokumentasi.',
+    },
+    en: {
+      title: 'Contact Us',
+      subtitle:
+        'Ready to discuss your land matter? Contact NS Land Consultant today for preliminary guidance on land, property, and documentation matters.',
+    },
+    backgroundImage: '/images/backgrounds/hero-contact.webp',
+  },
+};
+
+// ============================================================================
 // TRANSLATIONS
 // All UI text organized by language and page
 // [PLACEHOLDER] items marked for client review

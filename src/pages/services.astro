@@ -1,10 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { translations, defaultLang, type Lang } from '../data/content';
+import PageHero from '../components/PageHero.astro';
+import {
+  translations,
+  pageHeroes,
+  defaultLang,
+  type Lang,
+} from '../data/content';
 
 // Get language from URL query param or default
 const lang: Lang = (Astro.url.searchParams.get('lang') as Lang) || defaultLang;
 const t = translations[lang];
+const hero = pageHeroes.services[lang];
 
 const getIconSvg = (icon: string) => {
   const icons: Record<string, string> = {
@@ -38,22 +45,14 @@ const getIconSvg = (icon: string) => {
   pageType="services"
   lang={lang}
 >
+  <PageHero
+    title={hero.title}
+    subtitle={hero.subtitle}
+    backgroundImage={pageHeroes.services.backgroundImage}
+  />
+
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h1
-          class="reveal text-4xl md:text-5xl font-bold text-gray-900 mb-4"
-          data-i18n="services.title"
-        >
-          {t.services.title}
-        </h1>
-        <p
-          class="reveal text-lg text-gray-600 max-w-2xl mx-auto"
-          data-i18n="services.subtitle"
-        >
-          {t.services.subtitle}
-        </p>
-      </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {
           t.services.items.map((service, index) => (
