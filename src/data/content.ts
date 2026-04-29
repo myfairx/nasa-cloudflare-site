@@ -235,7 +235,7 @@ export const translations = {
       title: 'Perkhidmatan Kami',
       subtitle:
         'Perkhidmatan perundingan tanah komprehensif yang disusun untuk keperluan anda.',
-      viewAll: 'Lihat semua perkhidmatan →',
+      viewAll: 'Lihat semua perkhidmatan',
       helpTitle: 'Perlukan Bantuan Memilih Perkhidmatan?',
       helpSubtitle:
         'Pasukan kami sedia membantu anda dengan sebarang soalan mengenai perkhidmatan kami.',
@@ -468,7 +468,7 @@ export const translations = {
       title: 'Our Services',
       subtitle:
         'Comprehensive land consultancy services tailored to your needs.',
-      viewAll: 'View all services →',
+      viewAll: 'View all services',
       helpTitle: 'Need Help Choosing a Service?',
       helpSubtitle:
         'Our team is ready to assist you with any questions about our services.',
